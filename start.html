@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
+        <title>Start</title>
+    </head>
+    <body>
+        <p>Wilkommen</p>
+
+        <div id="callServiceOverlay" style="visibility: hidden;">
+            <p>Ein Mitarbeiter befindet sich auf den Weg zu Ihnen</p>
+            <button onclick="document.getElementById('callServiceOverlay').style.visibility = 'hidden'">Problem gelöst</button>
+        </div>
+
+        <button onclick="toMenu()">Menü</button>
+        <button onclick="document.getElementById('callServiceOverlay').style.visibility = 'visible'">Service</button>
+        <button onclick="toPayment()">Bezahlen</button>
+        
+        </br>
+        
+        <div style="float: left">
+            <button onclick="">Tagesgerichte</button>
+        </div>
+
+        <div>
+            <button>Mittagsmenü</button>
+        </div>
+        
+    </body>
+
+    <script>
+        function toMenu(){
+            window.location='./menu.html';
+        }
+
+        function callService(){
+            
+        }
+
+        function toPayment(){
+            window.location='./payment.html';
+        }
+    </script>
+</html>

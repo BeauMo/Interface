@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
+        <title>Karte</title>
+    </head>
+    <body>
+
+        <p>Menü</p>
+        <button onclick="showSpecific('foodList')">Speisen</button>
+        <button onclick="showSpecific('drinkList')">Getränke</button>
+        
+        <div id="lists">
+            <div style="display: none" id="drinkList"></div>
+            
+            <div style="display: block" id="foodList"></div>
+        </div>
+        
+        <button onclick="window.location.href='./start.html'">Home</button>
+        
+        <div id="basket" style="position: sticky">
+            <p>Warenkorb:</p>
+            <div>Leer</div>
+        </div>
+        
+    </body>
+    
+    <script>
+        
+        function fillMenu(){
+            
+            drinks.forEach(element => {
+
+                var div = document.createElement('div');
+                div.innerHTML = element.dish;
+
+                document.getElementById("drinkList").appendChild(div);
+            });
+
+            dishes.forEach(element => {
+
+                var div = document.createElement('div');
+                div.innerHTML = element.dish;
+                $(div).data("entry", element);
+
+                var orderButton = document.createElement("button");
+                orderButton.innerHTML = "Bestellen";
+                orderButton.addEventListener("click", addToOrder);
+
+                div.appendChild(orderButton);
+
+                document.getElementById("foodList").appendChild(div);
+            });
+        }
+
+        function showSpecific(buttonId) {
+            var lists = document.getElementById("lists").childNodes;
+            lists.forEach(element => {
+                if(element.nodeName == "DIV")
+                    element.style.display = "none";
+                    if(element.id == buttonId)
+                        element.style.display = "block";
+            });
+        }
+
+        function addToOrder(){
+    
+            prepareOrder.push( $( this.parentElement ).data("entry") );
+            updateOrder();
+        }
+
+        function updateOrder() {
+            $( "#basket" ).children().remove("div");
+            prepareOrder.forEach(element => {
+                var div = $("<div></div>").text(element.dish);
+                $( "#basket" ).append(div);
+            })
+        }
+        
+        let drinks = [
+            {id: 100, dish: "Cola", size: [0.3 , 0.5] },
+            {id: 2, dish: "Fanta", size: [0.3 , 0.5] },
+            {id: 3, dish: "Wasser mit Kohlensäure", size: [0.5 , 0.75] },
+            {id: 4, dish: "Wasser ohne Kohlensäure", size: [0.5 , 0.75] }
+        ];
+        let dishes = [
+            {id: 5, dish: "Schnitzel mit Pommes"},
+            {id: 6, dish: "Rumpsteak mit Bratkartoffeln"},
+            {id: 7, dish: "Flammkuchen"},
+            {id: 8, dish: "Suppe"},
+            {id: 9, dish: "Salat"},
+            {id: 10, dish: "Apfelstrudel"},
+            
+        ];
+        let prepareOrder = [];
+        let order = [];
+    </script>
+    <script>
+        window.addEventListener("load", fillMenu);
+    </script>
+
+</html>
+
+
