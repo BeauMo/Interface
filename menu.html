@@ -72,12 +72,17 @@
             $( "#basket" ).children().remove("div");
             prepareOrder.forEach(element => {
                 var div = $("<div></div>").text(element.dish);
+                div.append("<button>-</button>");
                 $( "#basket" ).append(div);
             })
         }
+
+        function removeFromPrepareOrder(){
+            
+        }
         
         let drinks = [
-            {id: 100, dish: "Cola", size: [0.3 , 0.5] },
+            {id: 100, dish: "Cola", size: [0.3 , 0.5], vegetarian: true, vegan: false},
             {id: 2, dish: "Fanta", size: [0.3 , 0.5] },
             {id: 3, dish: "Wasser mit Kohlensäure", size: [0.5 , 0.75] },
             {id: 4, dish: "Wasser ohne Kohlensäure", size: [0.5 , 0.75] }
