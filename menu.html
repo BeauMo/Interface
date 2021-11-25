@@ -32,6 +32,13 @@
 
                 var div = document.createElement('div');
                 div.innerHTML = element.dish;
+                $(div).data("entry", element);
+
+                var orderButton = document.createElement("button");
+                orderButton.innerHTML = "Bestellen";
+                orderButton.addEventListener("click", addToOrder);
+
+                div.appendChild(orderButton);
 
                 document.getElementById("drinkList").appendChild(div);
             });
@@ -68,17 +75,27 @@
             updateOrder();
         }
 
+        // Updates div of added Orders
         function updateOrder() {
             $( "#basket" ).children().remove("div");
+            var i = 0;
             prepareOrder.forEach(element => {
-                var div = $("<div></div>").text(element.dish);
-                div.append("<button>-</button>");
+                var div = $("<div id=order" + i + "></div>").text(element.dish);
+                var deleteButton = document.createElement("button");
+                deleteButton.textContent = "-";
+                deleteButton.addEventListener("click", removeFromPrepareOrder);
+                i++;
+                div.append(deleteButton);
                 $( "#basket" ).append(div);
             })
         }
 
+        // Function which is executet with button "-""
         function removeFromPrepareOrder(){
-            
+            var position = this.parentElement.id;
+            position = position.slice(5);
+            prepareOrder.splice(position, 1);
+            updateOrder();
         }
         
         let drinks = [
@@ -97,7 +114,7 @@
             
         ];
         let prepareOrder = [];
-        let order = [];
+        let ordered = [];
     </script>
     <script>
         window.addEventListener("load", fillMenu);
