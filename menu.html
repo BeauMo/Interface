@@ -80,14 +80,18 @@
 
         function addToOrder(){
             let addedOrder = $( this.parentElement ).data("entry")
+
             var div = document.createElement("div");
+            div.className = "singleOrder";
             div.textContent = addedOrder.dish;
             div.setAttribute("price", addedOrder.price);
+
             var deleteButton = document.createElement("button");
             deleteButton.className = "removeOrder";
             deleteButton.textContent = "-";
             deleteButton.addEventListener("click", removeFromPrepareOrder);
             div.append(deleteButton);
+
             document.getElementById("contentBasket").appendChild(div);
         }
 

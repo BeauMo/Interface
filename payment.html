@@ -2,6 +2,7 @@
 <html>
 
     <head>
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
         <title>Bezahlen</title>
         <meta name="description" content="Our first page">
         <meta name="keywords" content="html tutorial template">
@@ -9,7 +10,38 @@
 
     <body>
         <p>Bezahlen</p>
+        <p>Orders</p>
+        <div id="orders"></div>
         <button onclick="window.location.href='./start.html'">Home</button>
+        <p id="costs">Hi</p>
     </body>
+    <script>
+        function setup(){
+            let costs = 0;
+            document.getElementById("orders").innerHTML = sessionStorage.getItem("basket");
+
+            let persistentOrders = document.getElementsByClassName("singleOrder");
+
+            $(".removeOrder").remove();
+
+            Array.prototype.forEach.call(persistentOrders, function(element) {
+                let price = document.createElement("p")
+                price.textContent = element.getAttribute("price");
+                price.className = "price"
+                element.append(price);
+                costs = costs + parseFloat(price.innerHTML);
+                console.log(costs);
+                $("#costs").text(costs);
+            });
+        }
+    </script>
+    <script>
+        window.addEventListener("load", setup);
+    </script>
+    <!-- <style>
+        .price{
+            float: left;
+        }
+    </style> -->
 
 </html>
