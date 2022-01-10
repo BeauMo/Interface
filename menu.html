@@ -19,25 +19,24 @@
         
         <div id="basket" style="position: sticky">
             <p>Warenkorb:</p>
+            <div id="contentBasket"></div>
             <!-- <div>Leer</div> -->
+            <button>Bestellen</button>
         </div>
         
     </body>
     
     <script>
         
-        function fillMenu(){
+        function setup(){
 
-            // var sStorage = sessionStorage.getItem('divPrepareOrder');
-            // console.log(sStorage);
-            // if(sStorage != null){
-            //     $( "#basket" ).append(sStorage);
-            // }
-            // sStorage.forEach( element => {
-            //     console.log(element.innerHTML)
-            // });
-            // console.log(sessionStorage.getItem('divPrepareOrder'));
+            document.getElementById("contentBasket").innerHTML = sessionStorage.getItem("basket");
+            let persistentOrders = document.getElementsByClassName("removeOrder");
             
+            Array.prototype.forEach.call(persistentOrders, function(element) {
+                element.addEventListener("click", removeFromPrepareOrder);
+            });
+                        
             drinks.forEach(element => {
 
                 var div = document.createElement('div');
@@ -80,12 +79,16 @@
         }
 
         function addToOrder(){
-            var div = $("<div></div>").text($( this.parentElement ).data("entry").dish);
+            let addedOrder = $( this.parentElement ).data("entry")
+            var div = document.createElement("div");
+            div.textContent = addedOrder.dish;
+            div.setAttribute("price", addedOrder.price);
             var deleteButton = document.createElement("button");
+            deleteButton.className = "removeOrder";
             deleteButton.textContent = "-";
             deleteButton.addEventListener("click", removeFromPrepareOrder);
             div.append(deleteButton);
-            $( "#basket" ).append(div);
+            document.getElementById("contentBasket").appendChild(div);
         }
 
         // Function which is executet with button "-""
@@ -93,30 +96,30 @@
            $(this).parent().remove();
         }
 
-        function persistentData(){
-            // sessionStorage.setItem('divPrepareOrder', $( "#basket"));
+        function saveOrder(){
+            sessionStorage.setItem("basket", document.getElementById("contentBasket").innerHTML);
         }
         
         let drinks = [
-            {id: 100, dish: "Cola", size: [0.3 , 0.5], vegetarian: true, vegan: false},
-            {id: 2, dish: "Fanta", size: [0.3 , 0.5] },
-            {id: 3, dish: "Wasser mit Kohlensäure", size: [0.5 , 0.75] },
-            {id: 4, dish: "Wasser ohne Kohlensäure", size: [0.5 , 0.75] }
+            {id: 100, dish: "Cola", size: [0.3 , 0.5], vegetarian: true, vegan: false, price: 4.0},
+            {id: 2, dish: "Fanta", size: [0.3 , 0.5], price: 4.30 },
+            {id: 3, dish: "Wasser mit Kohlensäure", size: [0.5 , 0.75], price: 2.10 },
+            {id: 4, dish: "Wasser ohne Kohlensäure", size: [0.5 , 0.75], price: 0 }
         ];
         let dishes = [
-            {id: 5, dish: "Schnitzel mit Pommes"},
-            {id: 6, dish: "Rumpsteak mit Bratkartoffeln"},
-            {id: 7, dish: "Flammkuchen"},
-            {id: 8, dish: "Suppe"},
-            {id: 9, dish: "Salat"},
-            {id: 10, dish: "Apfelstrudel"},
+            {id: 5, dish: "Schnitzel mit Pommes", price: 12.00},
+            {id: 6, dish: "Rumpsteak mit Bratkartoffeln", price: 17.00},
+            {id: 7, dish: "Flammkuchen", price: 8.00},
+            {id: 8, dish: "Suppe", price: 6.00},
+            {id: 9, dish: "Salat", price: 4.50},
+            {id: 10, dish: "Apfelstrudel", price: 5.50},
             
         ];
         let ordered = [];
     </script>
     <script>
-        // window.addEventListener("beforeunload", persistentData);
-        window.addEventListener("load", fillMenu);
+        window.addEventListener("load", setup);
+        window.addEventListener("beforeunload", saveOrder)
     </script>
 
 </html>
