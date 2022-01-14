@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,0" />
+    <title>Pay</title>
+
+</head>
+
+<body>
+
+    <div class="tablet">
+        <div class="content_tablet">
+            <div class="navbar startseite">
+                <p>Tisch 3</p>
+            </div>
+
+
+
+            <div id="main">
+                <p>Bezahlen</p>
+                <p>Orders:</p>
+                <div id="orders"></div>
+                <p id="costs">Hi</p>
+
+
+            </div>
+
+
+        </div>
+
+        <div class="background_image wrapper">
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    function setup() {
+        let costs = 0;
+        document.getElementById("orders").innerHTML = sessionStorage.getItem("basket");
+
+        let persistentOrders = document.getElementsByClassName("singleOrder");
+
+        $(".removeOrder").remove();
+
+        Array.prototype.forEach.call(persistentOrders, function(element) {
+            let price = document.createElement("p")
+            price.textContent = element.getAttribute("price");
+            price.className = "price"
+            element.append(price);
+            costs = costs + parseFloat(price.innerHTML);
+            console.log(costs);
+            $("#costs").text(costs);
+        });
+    }
+
+    window.addEventListener("load", setup);
+</script>

@@ -1,0 +1,247 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tablet {
+    width: 1500px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    width: 1500px;
+    height: 1080px;
+    max-width: 100% !important;
+    margin-top: -980px;
+    ;
+}
+
+.background_image {
+    background-image: url(ipad-mockup.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.content_tablet {
+    position: relative;
+    width: 1259px;
+    height: 877px;
+    margin-left: 118px;
+    margin-top: 150px;
+    background: #f2f5f3;
+    border-radius: 19px;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+/*Page MENU
+======================================================================
+======================================================================*/
+
+.content_tablet.menu-page {
+    background-image: url(Bildmaterial/Background/cardboard-874327-2.jpg);
+}
+
+.left_side {
+    height: 837px !important;
+    margin: 20px 0px 20px 20px;
+    border-radius: 20px;
+    background: #f2f5f3;
+    float: left;
+    width: 73%;
+    box-shadow: 0 0 20px #858585;
+}
+
+.right_side {
+    float: right;
+    width: 24%;
+    margin-top: 85px;
+}
+
+
+/*Navabar*/
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 26px;
+    padding: 0 20px;
+    ;
+}
+
+a.pfeil_zurueck {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar.startseite {
+    justify-content: right;
+    padding-right: 50px;
+    font-weight: 700;
+    ;
+}
+
+
+/*Tabs*/
+
+.tab {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+
+/* Style the tab content */
+
+.tabcontent-gerichte {
+    display: none;
+}
+
+.tab button {
+    cursor: pointer;
+    width: 50%;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    transition: 0.3s;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    background: #cad7cc;
+}
+
+.tab button.active {
+    background-color: #007168;
+    transition: 0.7s;
+}
+
+.tab button.active {
+    color: white;
+}
+
+button.tablinks.tab-gerichte.active,
+button.tablinks.tab-gerichte {
+    margin-left: -15px;
+}
+
+button.tablinks.tab-getränke,
+button.tablinks.tab-getränke.active {
+    margin-right: -15px;
+}
+
+button.tablinks.tab-getränke.active,
+button.tablinks.tab-gerichte.active {
+    z-index: 50;
+}
+
+
+/*Filter Buttons*/
+
+div#filter-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+button.filter-button {
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 30px 10px 10px 10px;
+    background: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 0px 10px #a5a5a5;
+}
+
+
+/*Accordion*/
+
+.accordion {
+    background-color: #fff;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    margin: 10px 0;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.accordion.active {
+    background-color: #ccc;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.accordion.active:after {
+    content: "\2212";
+}
+
+.panel {
+    padding: 0 18px;
+    margin-top: -10px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.accordion-div {
+    width: 74%;
+    margin: 30px auto 0 auto;
+}
+
+
+/*Page WELCOME
+======================================================================
+======================================================================*/
+
+.welcome_content p {
+    font-size: 70px;
+    text-align: center;
+}
+
+.welcome_buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.welcome_buttons div {
+    background: #007168;
+    color: white;
+    width: 200px;
+    height: 170px;
+    border-radius: 50px;
+    padding-top: 30px;
+    box-shadow: 0px 0px 10px #656565;
+}
+
+.welcome_buttons div p {
+    font-size: 30px;
+    margin: 15px 0 0 0;
+}
+
+.welcome_buttons img {
+    width: auto;
+    height: 95px;
+    display: block;
+    margin: 0 auto;
+}

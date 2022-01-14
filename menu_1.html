@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,0" />
+    <title>Menu</title>
+
+</head>
+
+<body>
+
+    <div class="tablet">
+        <div class="content_tablet menu-page">
+            <div id="main">
+                <div class="left_side">
+                    <div class="navbar">
+                        <a href="welcome.html" class="pfeil_zurueck">Startseite</a>
+                        <p style="font-weight: bold;">MENU</p>
+                        <p>Tisch 3</p>
+                    </div>
+
+                    <div class="tab">
+                        <button class="tablinks tab-getränke" onclick="openTabs(event, 'Getränke')" id="defaultOpen">Getränke</button>
+                        <button class="tablinks tab-gerichte" onclick="openTabs(event, 'Gerichte')">Gerichte</button>
+                    </div>
+
+                    <div id="Getränke" class="tabcontent tabcontent-getränke">
+                        <h3>Getränke</h3>
+
+                        <div id="drinks" class="accordion-div">
+                            <!-- Div für Getränkeliste -->
+                        </div>
+                    </div>
+
+                    <div id="Gerichte" class="tabcontent tabcontent-gerichte">
+                        <div id="filter-buttons">
+                            <button class="filter-button">Vegetarisch</button>
+                            <button class="filter-button">Vorspeisen</button>
+                            <button class="filter-button">Hauptgerichte</button>
+                            <button class="filter-button">Kindermenüs</button>
+                            <button class="filter-button">Desserts</button>
+                        </div>
+
+                        <div id="dishes" class="accordion-div">
+                            <!-- Div für Essensliste -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="overviewOrder" class="right_side">
+                    <div>
+                        <h2>Übersicht</h2>
+                        <h4>Ihre hinzugefügten Speisen und Getränke:</h4>
+                        <div id="contentBasket"></div>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="background_image wrapper">
+
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    /*Moritz Script*/
+    /*==================================================================
+    ====================================================================*/
+
+    function setup() {
+
+        document.getElementById("contentBasket").innerHTML = sessionStorage.getItem("basket");
+        let persistentOrders = document.getElementsByClassName("removeOrder");
+
+        Array.prototype.forEach.call(persistentOrders, function(element) {
+            element.addEventListener("click", removeFromPrepareOrder);
+        });
+
+        drinks.forEach(element => {
+            var accordion = document.createElement("button");
+            accordion.className = "accordion";
+            accordion.innerHTML = element.dish;
+            // orderButton.addEventListener("click", addToOrder);
+
+            document.getElementById("drinks").appendChild(accordion);
+
+            var orderButton = document.createElement("button");
+            orderButton.addEventListener("click", addToOrder);
+            orderButton.innerHTML = "+";
+            orderButton.className = "order_button"
+
+            var div = document.createElement('div');
+            div.className = "panel";
+            div.innerHTML = element.dish + " " + element.price + "€";
+
+            $(div).data("entry", element);
+            $(accordion).data("entry", element);
+
+            document.getElementById("drinks").appendChild(div);
+            div.appendChild(orderButton);
+        });
+
+        dishes.forEach(element => {
+            var accordion = document.createElement("button");
+            accordion.className = "accordion";
+            accordion.innerHTML = element.dish;
+
+            document.getElementById("dishes").appendChild(accordion);
+
+            var orderButton = document.createElement("button");
+            orderButton.addEventListener("click", addToOrder);
+            orderButton.innerHTML = "+";
+            orderButton.className = "order_button"
+
+            var div = document.createElement('div');
+            div.className = "panel";
+            div.innerHTML = element.dish + " " + element.price + "€";
+
+            $(div).data("entry", element);
+            $(accordion).data("entry", element);
+
+            document.getElementById("dishes").appendChild(div);
+            div.appendChild(orderButton);
+        });
+
+        buildAccordion();
+    }
+
+    function openTabs(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    /*Erster Tab beim Laden offen*/
+    document.getElementById("defaultOpen").click();
+
+    /*Produkt zum Warenkorb hinzufügen*/
+    function addToOrder() {
+        let addedOrder = $(this.parentElement).data("entry")
+
+        var div = document.createElement("div");
+        div.className = "singleOrder";
+        div.textContent = addedOrder.dish;
+        div.setAttribute("price", addedOrder.price);
+
+        var deleteButton = document.createElement("button");
+        deleteButton.className = "removeOrder";
+        deleteButton.textContent = "-";
+        deleteButton.addEventListener("click", removeFromPrepareOrder);
+        div.append(deleteButton);
+
+        document.getElementById("contentBasket").appendChild(div);
+    }
+
+    function removeFromPrepareOrder() {
+        $(this).parent().remove();
+    }
+
+
+    /*Accordion*/
+
+    function buildAccordion() {
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    }
+
+    function saveOrder() {
+        sessionStorage.setItem("basket", document.getElementById("contentBasket").innerHTML);
+    }
+
+    /*Arrays in dem die Getränke und Gerichte angelegt werden*/
+    let drinks = [{
+        id: 100,
+        dish: "Cola",
+        size: [0.3, 0.5],
+        vegetarian: true,
+        vegan: false,
+        price: 4.0,
+        picture: "/picture/cola.png"
+    }, {
+        id: 2,
+        dish: "Fanta",
+        size: [0.3, 0.5],
+        price: 4.30
+    }, {
+        id: 3,
+        dish: "Wasser mit Kohlensäure",
+        size: [0.5, 0.75],
+        price: 2.10
+    }, {
+        id: 4,
+        dish: "Wasser ohne Kohlensäure",
+        size: [0.5, 0.75],
+        price: 0
+    }];
+
+    let dishes = [{
+            id: 5,
+            dish: "Schnitzel mit Pommes",
+            price: 12.00
+        }, {
+            id: 6,
+            dish: "Rumpsteak mit Bratkartoffeln",
+            price: 17.00
+        }, {
+            id: 7,
+            dish: "Flammkuchen",
+            price: 8.00
+        }, {
+            id: 8,
+            dish: "Suppe",
+            price: 6.00
+        }, {
+            id: 9,
+            dish: "Salat",
+            price: 4.50
+        }, {
+            id: 10,
+            dish: "Apfelstrudel",
+            price: 5.50
+        },
+
+    ];
+
+    window.addEventListener("load", setup);
+    window.addEventListener("beforeunload", saveOrder)
+</script>
