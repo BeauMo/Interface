@@ -184,15 +184,16 @@ button.filter-button {
 }
 
 .accordion:after {
-    content: '\002B';
+    content: '\1433';
     color: #777;
     font-weight: bold;
     float: right;
-    margin-left: 5px;
+    transform: rotate(90deg);
 }
 
 .accordion.active:after {
-    content: "\2212";
+    content: "\1433";
+    transform: rotate(270deg);
 }
 
 .panel {
@@ -202,6 +203,18 @@ button.filter-button {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+button.order_button {
+    position: absolute;
+    left: 100px;
+    width: 40px;
+    height: 53px;
+    margin-top: -53px;
+    border: none;
+    background: #007168;
+    color: white;
+    font-size: 25px;
 }
 
 .accordion-div {
