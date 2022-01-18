@@ -92,7 +92,15 @@
         drinks.forEach(element => {
             var accordion = document.createElement("button");
             accordion.className = "accordion";
-            accordion.innerHTML = element.dish;
+
+            var accordion_headline = document.createElement('p');
+            accordion_headline.innerHTML = element.dish;
+            accordion_headline.className = "accordion_headline";
+            accordion.appendChild(accordion_headline);
+
+            var price = document.createElement('p');
+            price.innerHTML = element.price + " €";
+            accordion.appendChild(price);
             // orderButton.addEventListener("click", addToOrder);
 
             document.getElementById("drinks").appendChild(accordion);
@@ -104,7 +112,30 @@
 
             var div = document.createElement('div');
             div.className = "panel";
-            div.innerHTML = element.dish + " " + element.price + "€";
+
+            var p_dish = document.createElement('p');
+            p_dish.className = "panel_content";
+            p_dish.innerHTML = element.dish;
+
+            var description = "<p class= 'asdf'>" + "<b>Zutaten: </b>" + element.description + "</p>";
+
+
+            var p_description = document.createElement('div');
+            p_description.className = "panel_content";
+            p_description.innerHTML = description;
+
+
+            var img = document.createElement('img');
+            img.className = "panel_content";
+            img.src = element.picture;
+
+
+            div.appendChild(p_dish);
+            div.appendChild(p_description);
+            div.appendChild(img);
+
+
+
 
             $(div).data("entry", element);
             $(accordion).data("entry", element);
@@ -205,16 +236,18 @@
     let drinks = [{
         id: 100,
         dish: "Cola",
+        description: "lorem",
         size: [0.3, 0.5],
         vegetarian: true,
         vegan: false,
-        price: 4.0,
-        picture: "/picture/cola.png"
+        price: 4.3,
+        picture: "\\Bildmaterial\\Gerichte\\Burger.png"
     }, {
         id: 2,
         dish: "Fanta",
         size: [0.3, 0.5],
-        price: 4.30
+        price: 4.30,
+        description: "fanta beschreibung",
     }, {
         id: 3,
         dish: "Wasser mit Kohlensäure",
@@ -224,7 +257,7 @@
         id: 4,
         dish: "Wasser ohne Kohlensäure",
         size: [0.5, 0.75],
-        price: 0
+        price: 0.0
     }];
 
     let dishes = [{

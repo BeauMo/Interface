@@ -54,6 +54,7 @@ body {
     float: left;
     width: 73%;
     box-shadow: 0 0 20px #858585;
+    overflow: scroll;
 }
 
 .right_side {
@@ -205,12 +206,28 @@ button.filter-button {
     transition: max-height 0.2s ease-out;
 }
 
+.panel img {
+    width: 270px;
+    height: auto;
+}
+
+button.accordion p {
+    float: left;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+p.accordion_headline {
+    min-width: 180px;
+    margin-right: 380px;
+}
+
 button.order_button {
     position: absolute;
     left: 90px;
     width: 50px;
     height: 56px;
-    margin-top: -56px;
+    margin-top: -106px;
     border: none;
     background: #007168;
     color: white;
