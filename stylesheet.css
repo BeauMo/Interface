@@ -227,12 +227,16 @@ button.order_button {
     left: 90px;
     width: 50px;
     height: 56px;
-    margin-top: -106px;
+    margin-top: -141px;
     border: none;
     background: #007168;
     color: white;
     font-size: 25px;
     cursor: pointer;
+}
+
+#Gerichte button.order_button {
+    margin-top: -56px !important;
 }
 
 .accordion-div {
