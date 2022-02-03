@@ -76,7 +76,7 @@
 </html>
 
 <script>
-    /*Moritz Script*/
+    /*Script*/
     /*==================================================================
     ====================================================================*/
 
@@ -113,26 +113,29 @@
             var div = document.createElement('div');
             div.className = "panel";
 
-            var p_dish = document.createElement('p');
-            p_dish.className = "panel_content";
-            p_dish.innerHTML = element.dish;
-
-            var description = "<p class= 'asdf'>" + "<b>Zutaten: </b>" + element.description + "</p>";
+            var dish = "<p class= 'meal_name'>" + element.dish + "</p>";
+            var description = "<p class= 'ingredients'>" + "<b>Zutaten: </b>" + element.description + "</p>";
 
 
-            var p_description = document.createElement('div');
-            p_description.className = "panel_content";
-            p_description.innerHTML = description;
+            var p_description_left = document.createElement('div');
+            p_description_left.className = "panel_content_left";
+            //p_description_left.innerHTML = description;
+
+            var p_description_right = document.createElement('div');
+            p_description_right.className = "panel_content_right";
+            p_description_right.innerHTML = dish + description;
 
 
             var img = document.createElement('img');
-            img.className = "panel_content";
+            img.className = "panel_content_img";
             img.src = element.picture;
 
 
-            div.appendChild(p_dish);
-            div.appendChild(p_description);
-            div.appendChild(img);
+            //div.appendChild(p_dish);
+            div.appendChild(p_description_right);
+            div.appendChild(p_description_left);
+            p_description_left.appendChild(img);
+
 
 
 
@@ -141,7 +144,7 @@
             $(accordion).data("entry", element);
 
             document.getElementById("drinks").appendChild(div);
-            div.appendChild(orderButton);
+            accordion.appendChild(orderButton);
         });
 
         dishes.forEach(element => {
@@ -241,7 +244,7 @@
         vegetarian: true,
         vegan: false,
         price: 4.3,
-        picture: "\\Bildmaterial\\Gerichte\\Burger.png"
+        picture: "\\Bildmaterial\\Getraenke\\Cola.png"
     }, {
         id: 2,
         dish: "Fanta",
