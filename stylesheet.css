@@ -79,7 +79,8 @@ body {
     border-top-right-radius: 20px;
 }
 
-div#contentBasket {
+div#contentBasket,
+div#ordered {
     max-height: 220px !important;
     height: 220px;
     overflow: scroll;
@@ -280,11 +281,6 @@ button.order_button {
 .orderbutton_left {
     float: left;
 }
-
-
-/* #Gerichte button.order_button {
-    margin-top: -18px !important;
-} */
 
 .accordion-div {
     width: 74%;
