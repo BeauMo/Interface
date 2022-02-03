@@ -463,10 +463,11 @@ div#main.page-pay {
 }
 
 p#costs {
-    border-top: 5px double black;
+    border-top: 3px solid black;
     width: 50px;
     margin-left: 450px;
     font-weight: bold;
+    padding-top: 5px;
 }
 
 
@@ -540,4 +541,9 @@ button#jetztBezahlenButton {
     padding: 10px 70px;
     border-radius: 20px;
     cursor: pointer;
+}
+
+div#orders {
+    overflow: scroll;
+    height: 430px;
 }
