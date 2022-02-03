@@ -103,12 +103,16 @@
             accordion.appendChild(price);
             // orderButton.addEventListener("click", addToOrder);
 
-            document.getElementById("drinks").appendChild(accordion);
+
+
+            var orderButton_div = document.createElement("div");
+            orderButton_div.className = "orderbutton_left";
 
             var orderButton = document.createElement("button");
             orderButton.addEventListener("click", addToOrder);
             orderButton.innerHTML = "+";
             orderButton.className = "order_button"
+            orderButton_div.appendChild(orderButton);
 
             var div = document.createElement('div');
             div.className = "panel";
@@ -139,8 +143,9 @@
 
             $(orderButton).data("entry", element);
 
+            document.getElementById("drinks").appendChild(orderButton_div);
+            document.getElementById("drinks").appendChild(accordion);
             document.getElementById("drinks").appendChild(div);
-            document.getElementById("drinks").appendChild(orderButton);
         });
 
         dishes.forEach(element => {
@@ -157,12 +162,14 @@
             accordion.appendChild(price);
             // orderButton.addEventListener("click", addToOrder);
 
-            document.getElementById("dishes").appendChild(accordion);
+            var orderButton_div = document.createElement("div");
+            orderButton_div.className = "orderbutton_left";
 
             var orderButton = document.createElement("button");
             orderButton.addEventListener("click", addToOrder);
             orderButton.innerHTML = "+";
             orderButton.className = "order_button"
+            orderButton_div.appendChild(orderButton);
 
             var div = document.createElement('div');
             div.className = "panel";
@@ -192,8 +199,9 @@
 
             $(orderButton).data("entry", element);
 
+            document.getElementById("dishes").appendChild(orderButton_div);
+            document.getElementById("dishes").appendChild(accordion);
             document.getElementById("dishes").appendChild(div);
-            document.getElementById("dishes").appendChild(orderButton);
         });
 
         buildAccordion();
@@ -318,7 +326,7 @@
             vegetarian: true,
             vegan: false,
             price: 2.7,
-            picture: "\\Bildmaterial\\Getraenke\\cofee.png"
+            picture: "\\Bildmaterial\\Getraenke\\coffee.png"
         }, {
             dish: "Café klein",
             description: "lorem",
@@ -326,7 +334,7 @@
             vegetarian: true,
             vegan: false,
             price: 2.2,
-            picture: "\\Bildmaterial\\Getraenke\\cofee.png"
+            picture: "\\Bildmaterial\\Getraenke\\coffee.png"
         },
 
 
