@@ -272,6 +272,10 @@
 
     function confirmOrder(){
         let contentBasket = document.getElementById("contentBasket");
+        let ordered = document.getElementById("ordered");
+
+        ordered.innerHTML = ordered.innerHTML + contentBasket.innerHTML;
+        contentBasket.innerHTML = "";
     }
 
     /*Arrays in dem die Getränke und Gerichte angelegt werden*/
