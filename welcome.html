@@ -20,7 +20,7 @@
                 <p>Willkommen</p>
                 <div id="callServiceOverlay" style="visibility: hidden;">
                     <h6>Ein Mitarbeiter befindet sich auf den Weg zu Ihnen!</h6>
-                    <button onclick="document.getElementById('callServiceOverlay').style.visibility = 'hidden'">Problem gelöst</button>
+                    <button onclick="document.getElementById('callServiceOverlay').style.visibility = 'hidden'; sessionStorage.setItem('callService', false)">Problem gelöst</button>
                 </div>
 
                 <div class="welcome_buttons">
@@ -79,8 +79,14 @@
 
     </div>
     <script>
+        function setup(){
+            if(sessionStorage.getItem("callService") == "true")
+                callService();
+        }
+
         function callService() {
             document.getElementById('callServiceOverlay').style.visibility = 'visible';
+            sessionStorage.setItem("callService", true)
         }
     </script>
 </body>
@@ -88,4 +94,5 @@
 </html>
 
 <script>
+    window.addEventListener("load", setup);
 </script>
