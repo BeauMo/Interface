@@ -13,7 +13,7 @@
 <body>
 
     <div class="tablet">
-        <div class="content_tablet">
+        <div class="content_tablet page-pay">
             <div class="navbar">
                 <a href="welcome.html" class="pfeil_zurueck">Startseite</a>
                 <p style="font-weight: bold;">PAY</p>
@@ -22,11 +22,35 @@
 
 
 
-            <div id="main">
-                <p>Bezahlen Hallo</p>
-                <p>Orders:</p>
+            <div id="main" class="page-pay">
+                <h2>Übersicht</h2>
+                <p>Ihre bestellten Speisen und Getränke:</p>
                 <div id="orders"></div>
                 <p id="costs">Hi</p>
+
+                <div class="payNow">
+                    <button id="jetztBezahlenButton">Jetzt bezahlen</button>
+                    <div id="myModal" class="modal">
+
+
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Rechnung bezahlen</h2>
+                            <div class="payDirectly nextToEachother">
+                                <h3>Direkt bezahlen:</h3>
+                                <p>PayPal, EC-Karte, Kreditkarte</p>
+                            </div>
+
+                            <div class="payCash nextToEachother">
+                                <h3>Bar bezahlen:</h3>
+                                <p>Service rufen</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
 
 
             </div>
@@ -55,14 +79,32 @@
 
         Array.prototype.forEach.call(persistentOrders, function(element) {
             let price = document.createElement("p")
-            price.textContent = element.getAttribute("price");
-            price.className = "price"
+            price.textContent = element.getAttribute("price") + " €";
+            price.className = "price";
             element.append(price);
             costs = costs + parseFloat(price.innerHTML);
             console.log(costs);
-            $("#costs").text(costs);
+            $("#costs").text(costs + " €");
         });
     }
 
     window.addEventListener("load", setup);
+
+    /*Modal*/
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("jetztBezahlenButton");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 </script>
