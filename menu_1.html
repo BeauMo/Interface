@@ -294,15 +294,13 @@
     function callService(){
         $("#CallServiceButtonMenu").text("Problem gelöst");
         $("#CallServiceButtonMenu").css("background-color", "red");
-        $("#CallServiceButtonMenu").css("color", "#fff");
         $("#CallServiceButtonMenu").attr("onclick", "problemSolved()");
         sessionStorage.setItem("callService", true);
     }
 
     function problemSolved(){
         $("#CallServiceButtonMenu").text("Service rufen!");
-        $("#CallServiceButtonMenu").css("background-color", "#f1f4f2");
-        $("#CallServiceButtonMenu").css("color", "#000");
+        $("#CallServiceButtonMenu").css("background-color", "#007168");
         $("#CallServiceButtonMenu").attr("onclick", "callService()");
         sessionStorage.setItem("callService", false);
     }
