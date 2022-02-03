@@ -28,7 +28,7 @@ body {
     height: 877px;
     margin-left: 118px;
     margin-top: 150px;
-    background: #f2f5f3;
+    background: #f8fffb;
     border-radius: 19px;
     overflow: scroll;
 }
@@ -43,7 +43,8 @@ body {
 ======================================================================*/
 
 .content_tablet.menu-page {
-    background-image: url(Bildmaterial/Background/cardboard-874327-2.jpg);
+    background-image: url(Bildmaterial/Background/Background_wood.png);
+    background-size: cover;
 }
 
 .left_side {
@@ -57,10 +58,53 @@ body {
     overflow: scroll;
 }
 
+
+/*Right side*/
+
 .right_side {
     float: right;
     width: 24%;
     margin-top: 85px;
+}
+
+
+/*Basket - Warenkorb*/
+
+#overviewOrder h4 {
+    margin: 0 !important;
+    background: #f2f5f3;
+    width: 90%;
+    padding: 10px 5px 5px 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+div#contentBasket {
+    max-height: 220px !important;
+    height: 220px;
+    overflow: scroll;
+    background: #f2f5f3;
+    width: 90%;
+    padding: 5px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.singleOrder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+button.removeOrder {
+    width: 50px;
+    height: 56px;
+    border: none;
+    background: #007168;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
 }
 
 
@@ -227,7 +271,7 @@ button.order_button {
     left: 90px;
     width: 50px;
     height: 56px;
-    margin-top: -141px;
+    margin-top: -18px;
     border: none;
     background: #007168;
     color: white;
@@ -244,6 +288,20 @@ button.order_button {
     margin: 30px auto 0 auto;
 }
 
+.panel_content_left {
+    float: left;
+    width: 25%;
+}
+
+.panel_content_right {
+    float: right;
+    width: 75%;
+}
+
+img.panel_content_img {
+    width: 100%;
+}
+
 
 /*Page WELCOME
 ======================================================================
@@ -251,6 +309,7 @@ button.order_button {
 
 .welcome_content p {
     font-size: 70px;
+    margin-top: 40px;
     text-align: center;
 }
 
@@ -279,4 +338,33 @@ button.order_button {
     height: 95px;
     display: block;
     margin: 0 auto;
+}
+
+.content_tablet.page-welcome #main .tagesessen {
+    background-image: url(Bildmaterial/Gerichte/tagesessen.png);
+    background-size: cover;
+}
+
+.content_tablet.page-welcome #main .mittagsmenu {
+    background-image: url(Bildmaterial/Gerichte/mittagsmenu.png);
+    background-size: cover;
+}
+
+.page-welcome div#main {
+    margin-top: 50px;
+}
+
+.page-welcome div#main div {
+    width: 45%;
+    height: 266px;
+}
+
+.tagesessen {
+    float: left;
+    margin-left: 45px;
+}
+
+.mittagsmenu {
+    float: right;
+    margin-right: 50px;
 }

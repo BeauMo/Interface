@@ -113,8 +113,9 @@
             var div = document.createElement('div');
             div.className = "panel";
 
-            var description = "<p class= 'asdf'>" + "<b>Zutaten: </b>" + element.description + "</p>";
             var dish = "<p class= 'asdf'>" + element.dish + "</p>";
+            var description = "<p class= 'asdf'>" + "<b>Zutaten: </b>" + element.description + "</p>";
+
 
             var p_description_left = document.createElement('div');
             p_description_left.className = "panel_content_left";
@@ -122,11 +123,11 @@
 
             var p_description_right = document.createElement('div');
             p_description_right.className = "panel_content_right";
-            p_description_right.innerHTML = description + dish;
+            p_description_right.innerHTML = dish + description;
 
 
             var img = document.createElement('img');
-            img.className = "panel_content";
+            img.className = "panel_content_img";
             img.src = element.picture;
 
 
@@ -243,7 +244,7 @@
         vegetarian: true,
         vegan: false,
         price: 4.3,
-        picture: "\\Bildmaterial\\Gerichte\\Burger.png"
+        picture: "\\Bildmaterial\\Getraenke\\Cola.png"
     }, {
         id: 2,
         dish: "Fanta",
