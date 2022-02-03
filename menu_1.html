@@ -84,6 +84,7 @@
     function setup() {
 
         document.getElementById("contentBasket").innerHTML = sessionStorage.getItem("basket");
+        document.getElementById("ordered").innerHTML = sessionStorage.getItem("ordered");
         let persistentOrders = document.getElementsByClassName("removeOrder");
 
         Array.prototype.forEach.call(persistentOrders, function(element) {
@@ -266,10 +267,6 @@
         }
     }
 
-    function saveOrder() {
-        sessionStorage.setItem("basket", document.getElementById("contentBasket").innerHTML);
-    }
-
     function confirmOrder() {
         let contentBasket = document.getElementById("contentBasket");
         let ordered = document.getElementById("ordered");
@@ -277,6 +274,13 @@
         ordered.innerHTML = ordered.innerHTML + contentBasket.innerHTML;
         contentBasket.innerHTML = "";
     }
+
+    function saveOrder() {
+        sessionStorage.setItem("basket", document.getElementById("contentBasket").innerHTML);
+        sessionStorage.setItem("ordered", document.getElementById("ordered").innerHTML);
+
+    }
+
 
     /*Arrays in dem die Getränke und Gerichte angelegt werden*/
     let drinks = [{
