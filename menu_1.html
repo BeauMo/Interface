@@ -135,12 +135,12 @@
             div.appendChild(p_description_right);
             div.appendChild(p_description_left);
             p_description_left.appendChild(img);
-            accordion.appendChild(orderButton);
+            // accordion.appendChild(orderButton);
 
-            $(div).data("entry", element);
-            $(accordion).data("entry", element);
+            $(orderButton).data("entry", element);
 
             document.getElementById("drinks").appendChild(div);
+            document.getElementById("drinks").appendChild(orderButton);
         });
 
         dishes.forEach(element => {
@@ -190,11 +190,10 @@
             div.appendChild(p_description_left);
             p_description_left.appendChild(img);
 
-            $(div).data("entry", element);
-            $(accordion).data("entry", element);
+            $(orderButton).data("entry", element);
 
             document.getElementById("dishes").appendChild(div);
-            accordion.appendChild(orderButton);
+            document.getElementById("dishes").appendChild(orderButton);
         });
 
         buildAccordion();
@@ -218,7 +217,7 @@
 
     /*Produkt zum Warenkorb hinzufügen*/
     function addToOrder() {
-        let addedOrder = $(this.parentElement).data("entry")
+        let addedOrder = $(this).data("entry")
 
         var div = document.createElement("div");
         div.className = "singleOrder";
