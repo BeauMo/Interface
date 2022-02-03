@@ -54,10 +54,11 @@
                         <h2>Übersicht</h2>
                         <h4>Ihre hinzugefügten Speisen und Getränke:</h4>
                         <div id="contentBasket"></div>
+                        <button onclick="confirmOrder()">Bestellen</button>
+                        <h4>Abgeschlossene Bestellungen</h4>
+                        <div id="ordered"></div>
 
                     </div>
-
-
 
                 </div>
 
@@ -259,6 +260,10 @@
 
     function saveOrder() {
         sessionStorage.setItem("basket", document.getElementById("contentBasket").innerHTML);
+    }
+
+    function confirmOrder(){
+        let contentBasket = document.getElementById("contentBasket");
     }
 
     /*Arrays in dem die Getränke und Gerichte angelegt werden*/
