@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <script   src="jquery-3.6.0.slim.min.js"></script> 
+    <script src="jquery-3.6.0.slim.min.js"></script>
     <link rel="stylesheet" href="stylesheet.css">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1,0" />
@@ -114,7 +114,7 @@
             div.className = "panel";
 
             var dish = "<p class= 'meal_name'>" + element.dish + "</p>";
-            var description = "<p class= 'ingredients'>" + "<b>Zutaten: </b>" + element.description + "</p>";
+            var description = "<p class= 'ingredients'>" + element.description + "</p>";
 
 
             var p_description_left = document.createElement('div');
@@ -264,31 +264,48 @@
 
     /*Arrays in dem die Getränke und Gerichte angelegt werden*/
     let drinks = [{
-        id: 100,
-        dish: "Cola",
-        description: "lorem",
-        size: [0.3, 0.5],
-        vegetarian: true,
-        vegan: false,
-        price: 4.3,
-        picture: "\\Bildmaterial\\Getraenke\\Cola.png"
-    }, {
-        id: 2,
-        dish: "Fanta",
-        size: [0.3, 0.5],
-        price: 4.30,
-        description: "fanta beschreibung",
-    }, {
-        id: 3,
-        dish: "Wasser mit Kohlensäure",
-        size: [0.5, 0.75],
-        price: 2.10
-    }, {
-        id: 4,
-        dish: "Wasser ohne Kohlensäure",
-        size: [0.5, 0.75],
-        price: 0.0
-    }];
+            id: 100,
+            dish: "Cola groß",
+            description: "Kohlensäurehaltiges Erfrischungsgetränk",
+            ingredients: "Wasser, Zucker oder kalorienfreie Süßstoffe, Koffein, Aromen, Mineralstoffe und Zusatzstoffe",
+            size: [0.3, 0.5],
+            vegetarian: true,
+            vegan: false,
+            price: 4.3,
+            picture: "\\Bildmaterial\\Getraenke\\Cola.png"
+        }, {
+            id: 100,
+            dish: "Cola klein",
+            description: "lorem",
+            size: [0.3, 0.5],
+            vegetarian: true,
+            vegan: false,
+            price: 4.3,
+            picture: "\\Bildmaterial\\Getraenke\\Cola.png"
+        },
+
+
+
+
+
+        {
+            id: 2,
+            dish: "Fanta",
+            size: [0.3, 0.5],
+            price: 4.30,
+            description: "fanta beschreibung",
+        }, {
+            id: 3,
+            dish: "Wasser mit Kohlensäure",
+            size: [0.5, 0.75],
+            price: 2.10
+        }, {
+            id: 4,
+            dish: "Wasser ohne Kohlensäure",
+            size: [0.5, 0.75],
+            price: 0.0
+        }
+    ];
 
     let dishes = [{
             id: 5,
