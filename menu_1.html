@@ -284,6 +284,10 @@
         $(".removeOrder").remove();
     }
 
+    function callService(){
+        $(".CallServiceButtonMenu");
+    }
+
     function saveOrder() {
         sessionStorage.setItem("basket", document.getElementById("contentBasket").innerHTML);
         sessionStorage.setItem("ordered", document.getElementById("ordered").innerHTML);
@@ -423,10 +427,6 @@
             price: 4.9,
             picture: "\\Bildmaterial\\Gerichte\\dessert01.png"
         },
-
-
-
-
     ];
 
     window.addEventListener("load", setup);
