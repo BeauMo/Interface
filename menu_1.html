@@ -90,6 +90,13 @@
         document.getElementById("ordered").innerHTML = sessionStorage.getItem("ordered");
         let persistentOrders = document.getElementsByClassName("removeOrder");
 
+        // let callService = sessionStorage.getItem("callService");
+
+        if(sessionStorage.getItem("callService") == "true")
+            callService();
+
+        console.log(sessionStorage.getItem("callService"))
+
         Array.prototype.forEach.call(persistentOrders, function(element) {
             element.addEventListener("click", removeFromPrepareOrder);
         });
@@ -285,8 +292,21 @@
     }
 
     function callService(){
-        $(".CallServiceButtonMenu");
+        $("#CallServiceButtonMenu").text("Problem gelöst");
+        $("#CallServiceButtonMenu").css("background-color", "red");
+        $("#CallServiceButtonMenu").css("color", "#fff");
+        $("#CallServiceButtonMenu").attr("onclick", "problemSolved()");
+        sessionStorage.setItem("callService", true);
     }
+
+    function problemSolved(){
+        $("#CallServiceButtonMenu").text("Service rufen!");
+        $("#CallServiceButtonMenu").css("background-color", "#f1f4f2");
+        $("#CallServiceButtonMenu").css("color", "#000");
+        $("#CallServiceButtonMenu").attr("onclick", "callService()");
+        sessionStorage.setItem("callService", false);
+    }
+
 
     function saveOrder() {
         sessionStorage.setItem("basket", document.getElementById("contentBasket").innerHTML);
