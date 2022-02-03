@@ -131,6 +131,8 @@ button#CallServiceButtonMenu {
     cursor: pointer;
     margin-top: 22px;
     margin-bottom: 20px;
+    background: #007168;
+    color: white;
 }
 
 
