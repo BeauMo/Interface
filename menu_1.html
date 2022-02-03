@@ -135,22 +135,27 @@
             div.appendChild(p_description_right);
             div.appendChild(p_description_left);
             p_description_left.appendChild(img);
-
-
-
-
+            accordion.appendChild(orderButton);
 
             $(div).data("entry", element);
             $(accordion).data("entry", element);
 
             document.getElementById("drinks").appendChild(div);
-            accordion.appendChild(orderButton);
         });
 
         dishes.forEach(element => {
             var accordion = document.createElement("button");
             accordion.className = "accordion";
-            accordion.innerHTML = element.dish;
+
+            var accordion_headline = document.createElement('p');
+            accordion_headline.innerHTML = element.dish;
+            accordion_headline.className = "accordion_headline";
+            accordion.appendChild(accordion_headline);
+
+            var price = document.createElement('p');
+            price.innerHTML = element.price + " €";
+            accordion.appendChild(price);
+            // orderButton.addEventListener("click", addToOrder);
 
             document.getElementById("dishes").appendChild(accordion);
 
@@ -161,13 +166,35 @@
 
             var div = document.createElement('div');
             div.className = "panel";
-            div.innerHTML = element.dish + " " + element.price + "€";
+
+            var dish = "<p class= 'meal_name'>" + element.dish + "</p>";
+            var description = "<p class= 'ingredients'>" + "<b>Zutaten: </b>" + element.description + "</p>";
+
+
+            var p_description_left = document.createElement('div');
+            p_description_left.className = "panel_content_left";
+            //p_description_left.innerHTML = description;
+
+            var p_description_right = document.createElement('div');
+            p_description_right.className = "panel_content_right";
+            p_description_right.innerHTML = dish + description;
+
+
+            var img = document.createElement('img');
+            img.className = "panel_content_img";
+            img.src = element.picture;
+
+
+            //div.appendChild(p_dish);
+            div.appendChild(p_description_right);
+            div.appendChild(p_description_left);
+            p_description_left.appendChild(img);
 
             $(div).data("entry", element);
             $(accordion).data("entry", element);
 
             document.getElementById("dishes").appendChild(div);
-            div.appendChild(orderButton);
+            accordion.appendChild(orderButton);
         });
 
         buildAccordion();
