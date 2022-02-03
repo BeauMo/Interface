@@ -350,6 +350,20 @@ p.meal_name {
 ======================================================================
 ======================================================================*/
 
+div#callServiceOverlay {
+    background: red;
+    text-align: center;
+    font-size: 45px;
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    padding: 20px 0;
+}
+
+div#callServiceOverlay h6 {
+    margin: 0;
+}
+
 .welcome_content p {
     font-size: 70px;
     margin-top: 40px;
