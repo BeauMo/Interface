@@ -302,6 +302,12 @@ img.panel_content_img {
     width: 100%;
 }
 
+p.meal_name {
+    font-size: 19px;
+    font-weight: bold;
+    color: #007168;
+}
+
 
 /*Page WELCOME
 ======================================================================
