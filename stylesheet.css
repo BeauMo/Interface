@@ -55,7 +55,6 @@ body {
     float: left;
     width: 73%;
     box-shadow: 0 0 20px #858585;
-    overflow: scroll;
 }
 
 
@@ -108,6 +107,34 @@ button.removeOrder {
     cursor: pointer;
 }
 
+button#confirmOrderButton {
+    background: #007168;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 10px 70px 10px 80px;
+    margin-left: 87px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+}
+
+
+/*Call Service Button Menu*/
+
+button#CallServiceButtonMenu {
+    width: 300px;
+    height: 70px;
+    position: fixed;
+    top: 150px;
+    right: 227px;
+    border-top-right-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
 
 /*Navabar*/
 
@@ -142,6 +169,12 @@ a.pfeil_zurueck {
     display: flex;
     justify-content: center;
     align-items: baseline;
+}
+
+div#Getränke,
+div#Gerichte {
+    overflow: scroll;
+    height: 690px;
 }
 
 
@@ -276,6 +309,11 @@ button.order_button {
     color: white;
     font-size: 25px;
     cursor: pointer;
+}
+
+input.input_field {
+    border: 1px solid #ddd;
+    padding: 7px;
 }
 
 .orderbutton_left {
