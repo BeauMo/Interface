@@ -71,7 +71,6 @@ body {
 
 #overviewOrder h4 {
     margin: 0 !important;
-    background: #f2f5f3;
     width: 90%;
     padding: 10px 5px 5px 5px;
     border-top-left-radius: 20px;
@@ -83,11 +82,29 @@ div#ordered {
     max-height: 220px !important;
     height: 220px;
     overflow: scroll;
-    background: #f2f5f3;
     width: 90%;
     padding: 5px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+#contentBasket .singleOrder,
+#ordered .singleOrder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    height: 30px;
+    margin-bottom: 10px;
+    padding: 0 10px !important;
+    border-radius: 20px;
+}
+#contentBasket button.removeOrder {
+    border: none;
+    background: none;
+    color: #017168;
+    font-size: 50px;
+    cursor: pointer;
+    margin-top: -6px;
 }
 
 .singleOrder {
@@ -98,8 +115,6 @@ div#ordered {
 }
 
 button.removeOrder {
-    width: 30px;
-    height: 30px;
     border: none;
     background: #007168;
     color: white;
