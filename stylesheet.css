@@ -256,6 +256,21 @@ button.filter-button {
     box-shadow: 0px 0px 10px #a5a5a5;
 }
 
+/*Kategorie Buttons*/
+.kategorie-buttons-div {
+    position: absolute;
+    left: 0;
+}
+.kategorie-buttons-div button {
+    background: #017168;
+    border: none;
+    padding: 10px 20px;
+    min-width: 100px;
+    margin-bottom: 15px;
+    color: white;
+    cursor: pointer;
+}
+
 
 /*Accordion*/
 
@@ -336,7 +351,7 @@ input.input_field {
 }
 
 .accordion-div {
-    width: 74%;
+    width: 75%;
     margin: 30px auto 0 auto;
 }
 
