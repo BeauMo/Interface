@@ -28,7 +28,11 @@
                     </div>
 
                     <div id="Getränke" class="tabcontent tabcontent-getränke">
-                        
+                        <div class="kategorie-buttons-div">
+                            <a href="#Alkoholfrei" class="kategorie-button">Alkoholfrei</a><br>
+                            <a href="#Heißgetränke" class="kategorie-button">Heißgetränke</a><br>
+                            <a href="#Alkoholisch" class="kategorie-button">Alkoholisch</a><br>
+                        </div>
                         <div id="drinks" class="accordion-div">
                             <!-- Div für Getränkeliste -->
                         </div>
@@ -44,8 +48,8 @@
                         </div>
                         <div class="kategorie-buttons-div">
                             <a href="#Burger" class="kategorie-button">Burger</a><br>
-                            <a href="#Pizza" class="kategorie-button">Pizza</a><br>
                             <a href="#Pasta" class="kategorie-button">Pasta</a><br>
+                            <a href="#Pizza" class="kategorie-button">Pizza</a><br>
                             <a href="#Dessert" class="kategorie-button">Dessert</a>
                         </div>
                         <div id="dishes" class="accordion-div">
@@ -142,6 +146,7 @@
 
             var div = document.createElement('div');
             div.className = "panel";
+            div.id = element.dish;
 
             var dish = "<p class= 'meal_name'>" + element.dish + "</p>";
             var description = "<p class= 'ingredients'>" + element.description + "</p>";
@@ -336,7 +341,8 @@
     }
 
 
-    /*Arrays in dem die Getränke und Gerichte angelegt werden*/
+    /*Arrays in dem die Getränke und Gerichte angelegt werden
+    dish MUSS eindeutigen Namen haben*/
     let drinks = [{
         type: "header",
         categorie: "Alkoholfrei"
@@ -418,7 +424,8 @@
         categorie: "Alkoholisch"
     }];
 
-    // Gerichte Arrays
+    /* Gerichte Arrays
+    dish MUSS eindeutigen Namen haben*/
 
     let dishes = [{
         type: "header",
