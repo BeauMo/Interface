@@ -260,15 +260,21 @@ button.filter-button {
 .kategorie-buttons-div {
     position: absolute;
     left: 0;
+    margin-top: 30px;
 }
 .kategorie-buttons-div button {
     background: #017168;
     border: none;
-    padding: 10px 20px;
-    min-width: 100px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    min-width: 95px;
     margin-bottom: 15px;
     color: white;
     cursor: pointer;
+}
+button.kategorie-button img {
+    width: 45px;
+    height: 45px;
 }
 
 
