@@ -51,7 +51,7 @@
 
 
             <div id="main">
-                <a href="menu_1.html#Pasta Basilicum" style="text-decoration: none !important;">
+                <a href="menu_1.html" style="text-decoration: none !important;">
                     <div class="tagesessen">
 
 
@@ -87,6 +87,13 @@
         function callService() {
             document.getElementById('callServiceOverlay').style.visibility = 'visible';
             sessionStorage.setItem("callService", true)
+        }
+
+        function myfun(){
+            $('.job_more_info').click(function(){
+                var newpage = window.open("./menu_1.php");
+                newpage.onload = function(){console.log("Hi das ist")};
+            })
         }
     </script>
 </body>
