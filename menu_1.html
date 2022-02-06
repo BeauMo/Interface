@@ -40,12 +40,13 @@
 
                     <div id="Gerichte" class="tabcontent tabcontent-gerichte">
                         <div id="filter-buttons">
-                            <button onlick="filterDishes('vegetarisch')" class="filter-button">Vegetarisch</button>
-                            <button onlick="filterDishes('vegan')" class="filter-button">Vegan</button>
-                            <button onlick="filterDishes('glutenfrei')" class="filter-button">Glutenfrei</button>
-                            <button onlick="filterDishes('fitness')" class="filter-button">Fitness</button>
-                            <button onlick="filterDishes('fisch')" class="filter-button">Fisch</button>
-                            <button onlick="filterDishes('fleisch')" class="filter-button">Fleisch</button>
+                            <button onclick="filterDishes('')" class="filter-button">Alles</button>
+                            <button onclick="filterDishes('vegetarisch')" class="filter-button">Vegetarisch</button>
+                            <button onclick="filterDishes('vegan')" class="filter-button">Vegan</button>
+                            <button onclick="filterDishes('glutenfrei')" class="filter-button">Glutenfrei</button>
+                            <button onclick="filterDishes('fitness')" class="filter-button">Fitness</button>
+                            <button onclick="filterDishes('fisch')" class="filter-button">Fisch</button>
+                            <button onclick="filterDishes('fleisch')" class="filter-button">Fleisch</button>
                             
                         </div>
                         <div class="kategorie-buttons-div">
@@ -106,8 +107,6 @@
         if (sessionStorage.getItem("callService") == "true")
             callService();
 
-        console.log(sessionStorage.getItem("callService"))
-
         Array.prototype.forEach.call(persistentOrders, function (element) {
             element.addEventListener("click", removeFromPrepareOrder);
         });
@@ -121,7 +120,9 @@
                 document.getElementById("drinks").appendChild(categorie);
                 return;
             }
-            console.log(element.categorie)
+            let dishContainer = document.createElement("div");
+            dishContainer.className = "drink_Container";
+
             var accordion = document.createElement("button");
             accordion.className = "accordion";
 
@@ -131,12 +132,9 @@
             accordion.appendChild(accordion_headline);
 
             var price = document.createElement('p');
-            price.innerHTML = element.price + " €";
+            price.innerHTML = element.price.toFixed(2) + " €";
             accordion.appendChild(price);
-            // orderButton.addEventListener("click", addToOrder);
-
-
-
+            
             var orderButton_div = document.createElement("div");
             orderButton_div.className = "orderbutton_left";
 
@@ -146,9 +144,9 @@
             orderButton.className = "order_button"
             orderButton_div.appendChild(orderButton);
 
-            var div = document.createElement('div');
-            div.className = "panel";
-            div.id = element.dish;
+            var panel = document.createElement('div');
+            panel.className = "panel";
+            panel.id = element.dish;
 
             var dish = "<p class= 'meal_name'>" + element.dish + "</p>";
             var description = "<p class= 'ingredients'>" + element.description + "</p>";
@@ -157,7 +155,6 @@
 
             var p_description_left = document.createElement('div');
             p_description_left.className = "panel_content_left";
-            //p_description_left.innerHTML = description;
 
             var p_description_right = document.createElement('div');
             p_description_right.className = "panel_content_right";
@@ -168,18 +165,17 @@
             img.className = "panel_content_img";
             img.src = element.picture;
 
-
-            //div.appendChild(p_dish);
-            div.appendChild(p_description_right);
-            div.appendChild(p_description_left);
+            panel.appendChild(p_description_right);
+            panel.appendChild(p_description_left);
             p_description_left.appendChild(img);
-            // accordion.appendChild(orderButton);
 
             $(orderButton).data("entry", element);
 
-            document.getElementById("drinks").appendChild(orderButton_div);
-            document.getElementById("drinks").appendChild(accordion);
-            document.getElementById("drinks").appendChild(div);
+            dishContainer.appendChild(orderButton_div);
+            dishContainer.appendChild(accordion);
+            dishContainer.appendChild(panel);
+            
+            document.getElementById("drinks").appendChild(dishContainer);
         });
 
         dishes.forEach(element => {
@@ -192,6 +188,10 @@
                 return;
             }
 
+            let dishContainer = document.createElement("div");
+            dishContainer.className = "dish_Container";
+            dishContainer.setAttribute("filter", element.filter);
+
             var accordion = document.createElement("button");
             accordion.classList.add("accordion", "accordion-dishes");
 
@@ -201,7 +201,7 @@
             accordion.appendChild(accordion_headline);
 
             var price = document.createElement('p');
-            price.innerHTML = element.price + " €";
+            price.innerHTML = element.price.toFixed(2) + " €";
             accordion.appendChild(price);
             // orderButton.addEventListener("click", addToOrder);
 
@@ -214,9 +214,9 @@
             orderButton.className = "order_button"
             orderButton_div.appendChild(orderButton);
 
-            var div = document.createElement('div');
-            div.classList.add("panel", "panel-dishes");
-            div.id = element.dish;
+            var panel = document.createElement('div');
+            panel.classList.add("panel", "panel-dishes");
+            panel.id = element.dish;
 
             var dish = "<p class= 'meal_name'>" + element.dish + "</p>";
             var description = "<p class= 'ingredients'>" + element.description + "</p>";
@@ -238,15 +238,16 @@
 
 
             //div.appendChild(p_dish);
-            div.appendChild(p_description_right);
-            div.appendChild(p_description_left);
+            panel.appendChild(p_description_right);
+            panel.appendChild(p_description_left);
             p_description_left.appendChild(img);
 
             $(orderButton).data("entry", element);
 
-            document.getElementById("dishes").appendChild(orderButton_div);
-            document.getElementById("dishes").appendChild(accordion);
-            document.getElementById("dishes").appendChild(div);
+            dishContainer.appendChild(orderButton_div);
+            dishContainer.appendChild(accordion);
+            dishContainer.appendChild(panel);
+            document.getElementById("dishes").appendChild(dishContainer);
         });
 
         buildAccordion();
@@ -277,7 +278,7 @@
         var div = document.createElement("div");
         div.className = "singleOrder";
         div.textContent = addedOrder.dish;
-        div.setAttribute("price", addedOrder.price);
+        div.setAttribute("price", addedOrder.price.toFixed(2));
 
         var deleteButton = document.createElement("button");
         deleteButton.className = "removeOrder";
@@ -299,20 +300,36 @@
         var i;
 
         for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
+            acc[i].addEventListener("click", toggleAccordion );
         }
     }
 
-    function filterDishes() {
-        $(".");
+    function toggleAccordion () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+    }
+
+    function filterDishes(filter) {
+        let dishes_dom = document.getElementsByClassName("dish_Container");
+        // console.log(dishes_dom);
+        
+        Array.prototype.forEach.call(dishes_dom, function (element) {
+            let filters = element.getAttribute("filter");
+            if(!filters.includes(filter)){
+                element.hidden = true;
+            }
+            // else if(filter == "all"){
+            //     element.hidden = false
+            // }
+            else{
+                element.hidden = false;
+            }
+        });
     }
 
     function confirmOrder() {

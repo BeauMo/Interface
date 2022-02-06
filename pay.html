@@ -49,12 +49,12 @@
 
                     </div>
 
-
+                </div>
+                <div id="callServiceBanner">
+                    <button onclick="callService()" id="CallServiceButtonMenu">Service rufen!</button>
                 </div>
 
-
             </div>
-
 
         </div>
 
@@ -83,9 +83,22 @@
             price.className = "price";
             element.append(price);
             costs = costs + parseFloat(price.innerHTML);
-            console.log(costs);
-            $("#costs").text(costs + " €");
+            $("#costs").text(costs.toFixed(2) + " €");
         });
+    }
+
+    function callService() {
+        $("#CallServiceButtonMenu").text("Problem gelöst?");
+        $("#CallServiceButtonMenu").css("background-color", "red");
+        $("#CallServiceButtonMenu").attr("onclick", "problemSolved()");
+        sessionStorage.setItem("callService", true);
+    }
+
+    function problemSolved() {
+        $("#CallServiceButtonMenu").text("Service rufen!");
+        $("#CallServiceButtonMenu").css("background-color", "#007168");
+        $("#CallServiceButtonMenu").attr("onclick", "callService()");
+        sessionStorage.setItem("callService", false);
     }
 
     window.addEventListener("load", setup);
