@@ -70,6 +70,14 @@
                         <h4>Ihre hinzugefügten Speisen und Getränke:</h4>
                         <div id="contentBasket"></div>
                         <button onclick="confirmOrder()" id="confirmOrderButton">Bestellen</button>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <!-- <span class="close">&times;</span> -->
+                                <h2>Ihre Bestellung wurde abgeschickt</h2>
+                                <button class="closeWindow" style="cursor: pointer">Zurück zur Karte</button>
+                            </div>
+
+                        </div>
                         <h4>Abgeschlossene Bestellungen:</h4>
                         <div id="ordered"></div>
 
@@ -365,6 +373,23 @@
 
     }
 
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("confirmOrderButton");
+    var span = document.getElementsByClassName("closeWindow")[0];
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
 
     /*Arrays in dem die Getränke und Gerichte angelegt werden
     dish MUSS eindeutigen Namen haben*/
@@ -491,10 +516,10 @@
         categorie: "Pasta",
         filter: ["vegetarisch"]
     }, {
-        dish: "Ravioli Napoli",
-        description: "Original hausgemachte italienische Ravioli",
-        ingredients: "Gemüse, Strauchtomaten, Lauchzwiebeln, Chilschoten, Krätuter",
-        price: 7.80,
+        dish: "Nudelsuppe Italiano",
+        description: "Original hausgemachte italienische Suppe",
+        ingredients: "Gemüse, Strauchtomaten, Lauchzwiebeln, Chilschoten, Kräuter",
+        price: 8.50,
         picture: "Bildmaterial/Gerichte/suppe01.png",
         categorie: "Pasta",
         filter: ["vegetarisch","vegan", "glutenfrei"]
