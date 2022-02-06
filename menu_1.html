@@ -133,6 +133,7 @@
 
             var price = document.createElement('p');
             price.innerHTML = element.price.toFixed(2) + " €";
+            price.className = "price-menu"
             accordion.appendChild(price);
             
             var orderButton_div = document.createElement("div");
@@ -202,6 +203,7 @@
 
             var price = document.createElement('p');
             price.innerHTML = element.price.toFixed(2) + " €";
+            price.className = "price-menu"
             accordion.appendChild(price);
             // orderButton.addEventListener("click", addToOrder);
 
