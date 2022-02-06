@@ -171,6 +171,11 @@ a.pfeil_zurueck {
     color: black;
 }
 
+a.pfeil_zurueck:before {
+    font-weight: 600;
+    content: "< ";
+}
+
 .navbar.startseite {
     justify-content: right;
     padding-right: 50px;
@@ -513,7 +518,7 @@ div#main.page-pay {
 
 p#costs {
     border-top: 3px solid black;
-    width: 50px;
+    width: 60px;
     margin-left: 450px;
     font-weight: bold;
     padding-top: 5px;
@@ -543,7 +548,7 @@ p#costs {
     background-color: #cad7cc;
     margin: auto;
     padding: 20px;
-    width: 50%;
+    width: 670px;
     margin-top: 320px;
     height: 200px;
     border-radius: 20px;
@@ -581,15 +586,21 @@ p#costs {
     cursor: pointer;
 }
 
-button#jetztBezahlenButton {
-    background: #007168;
-    color: #fff;
+button#jetztBezahlenButton,
+.page-pay button#CallServiceButtonMenu {
     border: none !important;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 70px;
-    border-radius: 20px;
-    cursor: pointer;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    padding: 10px 70px !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    height: 40px !important;
+    width: 300px;
+}
+
+button#jetztBezahlenButton {
+    background: #007168 !important;
+    color: #fff !important;
 }
 
 div#orders {
