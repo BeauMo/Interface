@@ -393,7 +393,7 @@ p.meal_name {
 ======================================================================*/
 
 div#callServiceOverlay {
-    background: red;
+    background: #cb0000;
     text-align: center;
     font-size: 45px;
     position: absolute;
