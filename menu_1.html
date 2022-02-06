@@ -73,7 +73,8 @@
                         <div id="myModal" class="modal">
                             <div class="modal-content">
                                 <!-- <span class="close">&times;</span> -->
-                                <h2>Ihre Bestellung wurde abgeschickt</h2>
+                                <h2>Ihre Bestellung wurde abgeschickt.<br> Guten Appetit!
+                                </h2>
                                 <button class="closeWindow" style="cursor: pointer">Zurück zur Karte</button>
                             </div>
 
@@ -343,13 +344,13 @@
     }
 
     function confirmOrder() {
-        
+
         let contentBasket = document.getElementById("contentBasket");
         let ordered = document.getElementById("ordered");
 
         ordered.innerHTML = ordered.innerHTML + contentBasket.innerHTML;
         contentBasket.innerHTML = "";
-        
+
         $(".removeOrder").remove();
         buildModal();
     }
@@ -375,7 +376,7 @@
 
     }
 
-    function buildModal(){
+    function buildModal() {
         var modal = document.getElementById("myModal");
         var btn = document.getElementById("confirmOrderButton");
         var span = document.getElementsByClassName("closeWindow")[0];

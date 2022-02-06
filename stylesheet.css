@@ -1,628 +1,594 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.tablet {
-    width: 1500px;
-    margin: 0 auto;
-}
-
-.wrapper {
-    width: 1500px;
-    height: 1080px;
-    max-width: 100% !important;
-    margin-top: -980px;
-    ;
-}
-
-.background_image {
-    background-image: url(ipad-mockup.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-}
-
-.content_tablet {
-    position: relative;
-    width: 1259px;
-    height: 877px;
-    margin-left: 118px;
-    margin-top: 150px;
-    background: #f8fffb;
-    border-radius: 19px;
-    overflow: scroll;
-}
-
-::-webkit-scrollbar {
-    display: none;
-}
-
-
-/*Page MENU
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .tablet {
+        width: 1500px;
+        margin: 0 auto;
+    }
+    
+    .wrapper {
+        width: 1500px;
+        height: 1080px;
+        max-width: 100% !important;
+        margin-top: -980px;
+        ;
+    }
+    
+    .background_image {
+        background-image: url(ipad-mockup.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+    
+    .content_tablet {
+        position: relative;
+        width: 1259px;
+        height: 877px;
+        margin-left: 118px;
+        margin-top: 150px;
+        background: #f8fffb;
+        border-radius: 19px;
+        overflow: scroll;
+    }
+    
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    /*Page MENU
 ======================================================================
 ======================================================================*/
-
-.content_tablet.menu-page,
-.content_tablet.page-pay {
-    background-image: url(Bildmaterial/Background/Background_wood.png);
-    background-size: cover;
-}
-
-.left_side {
-    height: 837px !important;
-    margin: 20px 0px 20px 20px;
-    border-radius: 20px;
-    background: #f2f5f3;
-    float: left;
-    width: 73%;
-    box-shadow: 0 0 20px #858585;
-}
-
-
-/*Right side*/
-
-.right_side {
-    float: right;
-    width: 24%;
-}
-
-
-/*Basket - Warenkorb*/
-
-#overviewOrder h4 {
-    margin: 0 !important;
-    width: 90%;
-    padding: 10px 5px 5px 5px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-div#contentBasket,
-div#ordered {
-    max-height: 220px !important;
-    height: 220px;
-    overflow: scroll;
-    width: 90%;
-    padding: 5px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-#contentBasket .singleOrder,
-#ordered .singleOrder {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    height: 30px;
-    margin-bottom: 10px;
-    padding: 0 10px !important;
-    border-radius: 20px;
-}
-
-#contentBasket button.removeOrder {
-    border: none;
-    background: none;
-    color: #017168;
-    font-size: 50px;
-    cursor: pointer;
-    margin-top: -6px;
-}
-
-.singleOrder {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 5px;
-}
-
-button.removeOrder {
-    border: none;
-    background: #007168;
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-button#confirmOrderButton {
-    background: #007168;
-    color: white;
-    border: none;
-    font-size: 16px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    border-radius: 20px;
-    width: 90%;
-    height: 45px;
-}
-
-
-/*Call Service Button Menu*/
-
-button#CallServiceButtonMenu {
-    width: 90%;
-    height: 45px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    margin-top: 22px;
-    margin-bottom: 20px;
-    background: #007168;
-    color: white;
-}
-
-
-/*Navabar*/
-
-.navbar {
-    display: flex;
-    flex-direction: row;
-    align-content: stretch;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 26px;
-    padding: 0 20px;
-    ;
-}
-
-a.pfeil_zurueck {
-    text-decoration: none;
-    color: black;
-}
-
-a.pfeil_zurueck:before {
-    font-weight: 600;
-    content: "< ";
-}
-
-.navbar.startseite {
-    justify-content: right;
-    padding-right: 50px;
-    font-weight: 700;
-    ;
-}
-
-
-/*Tabs*/
-
-.tab {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-}
-
-div#Getränke,
-div#Gerichte {
-    overflow: scroll;
-    height: 690px;
-}
-
-
-/* Style the tab content */
-
-.tabcontent-gerichte {
-    display: none;
-}
-
-.tab button {
-    cursor: pointer;
-    width: 50%;
-    height: 50px;
-    border: none;
-    border-radius: 20px;
-    transition: 0.3s;
-    font-size: 20px;
-    font-weight: bold;
-    color: black;
-    background: #cad7cc;
-}
-
-.tab button.active {
-    background-color: #007168;
-    transition: 0.7s;
-}
-
-.tab button.active {
-    color: white;
-}
-
-button.tablinks.tab-gerichte.active,
-button.tablinks.tab-gerichte {
-    margin-left: -15px;
-}
-
-button.tablinks.tab-getränke,
-button.tablinks.tab-getränke.active {
-    margin-right: -15px;
-}
-
-button.tablinks.tab-getränke.active,
-button.tablinks.tab-gerichte.active {
-    z-index: 50;
-}
-
-
-/*Filter Buttons*/
-
-div#filter-buttons {
-    display: flex;
-    justify-content: center;
-}
-
-button.filter-button {
-    cursor: pointer;
-    padding: 10px 20px;
-    margin: 30px 10px 10px 10px;
-    background: white;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 50px;
-    border: none;
-    box-shadow: 0px 0px 10px #a5a5a5;
-}
-
-
-/*Kategorie Buttons*/
-
-.kategorie-buttons-div {
-    position: absolute;
-    left: 0;
-    margin-top: 30px;
-}
-
-div.kategorie-buttons-div img {
-    background: #017168;
-    box-shadow: 0px 0px 10px #656565;
-    border: none;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    min-width: 40px;
-    margin-bottom: 15px;
-    color: white;
-    cursor: pointer;
-    padding: 5px 30px;
-}
-
-.kategorie-button img {
-    width: 45px;
-    height: 45px;
-}
-
-
-/*Accordion*/
-
-.accordion {
-    background-color: #fff;
-    color: black;
-    cursor: pointer;
-    padding: 15px;
-    width: 88%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-}
-
-.accordion.active {
-    background-color: #cad7cc;
-}
-
-.accordion:after {
-    content: '\1433';
-    color: #777;
-    font-weight: bold;
-    float: right;
-    transform: rotate(90deg);
-}
-
-.accordion.active:after {
-    content: "\1433";
-    transform: rotate(270deg);
-}
-
-.panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    width: 82.8%;
-    margin-left: 50px;
-    margin-bottom: 20px;
-}
-
-.panel img {
-    width: 270px;
-    height: auto;
-}
-
-button.accordion p {
-    float: left;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-p.accordion_headline {
-    min-width: 240px;
-    margin-right: 230px;
-}
-
-p.price-menu {
-    text-align: right !important;
-    width: 80px;
-}
-
-button.order_button {
-    width: 50px;
-    height: 50px;
-    border: none;
-    background: #007168;
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-input.input_field {
-    border: 1px solid #ddd;
-    padding: 7px;
-}
-
-.orderbutton_left {
-    float: left;
-}
-
-.accordion-div {
-    width: 75%;
-    margin: 30px auto 0 auto;
-}
-
-.panel_content_left {
-    float: left;
-    width: 25%;
-}
-
-.panel_content_right {
-    float: right;
-    width: 75%;
-}
-
-img.panel_content_img {
-    width: 100%;
-}
-
-p.meal_name {
-    font-size: 19px;
-    font-weight: bold;
-    color: #007168;
-}
-
-
-/*Page WELCOME
+    
+    .content_tablet.menu-page,
+    .content_tablet.page-pay {
+        background-image: url(Bildmaterial/Background/Background_wood.png);
+        background-size: cover;
+    }
+    
+    .left_side {
+        height: 837px !important;
+        margin: 20px 0px 20px 20px;
+        border-radius: 20px;
+        background: #f2f5f3;
+        float: left;
+        width: 73%;
+        box-shadow: 0 0 20px #858585;
+    }
+    /*Right side*/
+    
+    .right_side {
+        float: right;
+        width: 24%;
+    }
+    /*Basket - Warenkorb*/
+    
+    #overviewOrder h4 {
+        margin: 0 !important;
+        width: 90%;
+        padding: 10px 5px 5px 5px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    
+    div#contentBasket,
+    div#ordered {
+        max-height: 220px !important;
+        height: 220px;
+        overflow: scroll;
+        width: 90%;
+        padding: 5px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    
+    #contentBasket .singleOrder,
+    #ordered .singleOrder {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        height: 30px;
+        margin-bottom: 10px;
+        padding: 0 10px !important;
+        border-radius: 20px;
+    }
+    
+    #contentBasket button.removeOrder {
+        border: none;
+        background: none;
+        color: #017168;
+        font-size: 50px;
+        cursor: pointer;
+        margin-top: -6px;
+    }
+    
+    .singleOrder {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 5px;
+    }
+    
+    button.removeOrder {
+        border: none;
+        background: #007168;
+        color: white;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    
+    button#confirmOrderButton {
+        background: #007168;
+        color: white;
+        border: none;
+        font-size: 16px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        border-radius: 20px;
+        width: 90%;
+        height: 45px;
+    }
+    /*Call Service Button Menu*/
+    
+    button#CallServiceButtonMenu {
+        width: 90%;
+        height: 45px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        margin-top: 22px;
+        margin-bottom: 20px;
+        background: #007168;
+        color: white;
+    }
+    /*Navabar*/
+    
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        align-content: stretch;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 26px;
+        padding: 0 20px;
+        ;
+    }
+    
+    a.pfeil_zurueck {
+        text-decoration: none;
+        color: black;
+    }
+    
+    a.pfeil_zurueck:before {
+        font-weight: 600;
+        content: "< ";
+    }
+    
+    .navbar.startseite {
+        justify-content: right;
+        padding-right: 50px;
+        font-weight: 700;
+        ;
+    }
+    /*Tabs*/
+    
+    .tab {
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
+    
+    div#Getränke,
+    div#Gerichte {
+        overflow: scroll;
+        height: 690px;
+    }
+    /* Style the tab content */
+    
+    .tabcontent-gerichte {
+        display: none;
+    }
+    
+    .tab button {
+        cursor: pointer;
+        width: 50%;
+        height: 50px;
+        border: none;
+        border-radius: 20px;
+        transition: 0.3s;
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        background: #cad7cc;
+    }
+    
+    .tab button.active {
+        background-color: #007168;
+        transition: 0.7s;
+    }
+    
+    .tab button.active {
+        color: white;
+    }
+    
+    button.tablinks.tab-gerichte.active,
+    button.tablinks.tab-gerichte {
+        margin-left: -15px;
+    }
+    
+    button.tablinks.tab-getränke,
+    button.tablinks.tab-getränke.active {
+        margin-right: -15px;
+    }
+    
+    button.tablinks.tab-getränke.active,
+    button.tablinks.tab-gerichte.active {
+        z-index: 50;
+    }
+    /*Filter Buttons*/
+    
+    div#filter-buttons {
+        display: flex;
+        justify-content: center;
+    }
+    
+    button.filter-button {
+        cursor: pointer;
+        padding: 10px 20px;
+        margin: 30px 10px 10px 10px;
+        background: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 50px;
+        border: none;
+        box-shadow: 0px 0px 10px #a5a5a5;
+    }
+    /*Kategorie Buttons*/
+    
+    .kategorie-buttons-div {
+        position: absolute;
+        left: 0;
+        margin-top: 30px;
+    }
+    
+    div.kategorie-buttons-div img {
+        background: #017168;
+        box-shadow: 0px 0px 10px #656565;
+        border: none;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        min-width: 40px;
+        margin-bottom: 15px;
+        color: white;
+        cursor: pointer;
+        padding: 5px 30px;
+    }
+    
+    .kategorie-button img {
+        width: 45px;
+        height: 45px;
+    }
+    /*Accordion*/
+    
+    .accordion {
+        background-color: #fff;
+        color: black;
+        cursor: pointer;
+        padding: 15px;
+        width: 88%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+    
+    .accordion.active {
+        background-color: #cad7cc;
+    }
+    
+    .accordion:after {
+        content: '\1433';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        transform: rotate(90deg);
+    }
+    
+    .accordion.active:after {
+        content: "\1433";
+        transform: rotate(270deg);
+    }
+    
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        width: 82.8%;
+        margin-left: 50px;
+        margin-bottom: 20px;
+    }
+    
+    .panel img {
+        width: 270px;
+        height: auto;
+    }
+    
+    button.accordion p {
+        float: left;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    p.accordion_headline {
+        min-width: 240px;
+        margin-right: 230px;
+    }
+    
+    p.price-menu {
+        text-align: right !important;
+        width: 80px;
+    }
+    
+    button.order_button {
+        width: 50px;
+        height: 50px;
+        border: none;
+        background: #007168;
+        color: white;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    
+    input.input_field {
+        border: 1px solid #ddd;
+        padding: 7px;
+    }
+    
+    .orderbutton_left {
+        float: left;
+    }
+    
+    .accordion-div {
+        width: 75%;
+        margin: 30px auto 0 auto;
+    }
+    
+    .panel_content_left {
+        float: left;
+        width: 25%;
+    }
+    
+    .panel_content_right {
+        float: right;
+        width: 75%;
+    }
+    
+    img.panel_content_img {
+        width: 100%;
+    }
+    
+    p.meal_name {
+        font-size: 19px;
+        font-weight: bold;
+        color: #007168;
+    }
+    /*Page WELCOME
 ======================================================================
 ======================================================================*/
-
-div#callServiceOverlay {
-    background: #cb0000;
-    text-align: center;
-    font-size: 45px;
-    position: absolute;
-    width: 100%;
-    top: 0px;
-    border-radius: 20px;
-    padding: 14px 0;
-}
-
-#callServiceOverlay button {
-    background: #fff;
-    color: #007168;
-    border: none !important;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 30px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-div#callServiceOverlay h6 {
-    margin: 0;
-    color: #fff;
-    ;
-}
-
-.welcome_content p {
-    font-size: 70px;
-    margin-top: 40px;
-    text-align: center;
-}
-
-.welcome_buttons {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.welcome_buttons div {
-    background: #007168;
-    color: white;
-    width: 200px;
-    height: 170px;
-    border-radius: 50px;
-    padding-top: 30px;
-    box-shadow: 0px 0px 10px #656565;
-}
-
-.welcome_buttons div p {
-    font-size: 30px;
-    margin: 15px 0 0 0;
-}
-
-.welcome_buttons img {
-    width: auto;
-    height: 95px;
-    display: block;
-    margin: 0 auto;
-}
-
-.content_tablet.page-welcome #main .tagesessen {
-    background-image: url(Bildmaterial/Gerichte/tagesessen.png);
-    background-size: cover;
-}
-
-.content_tablet.page-welcome #main .mittagsmenu {
-    background-image: url(Bildmaterial/Gerichte/mittagsmenu.png);
-    background-size: cover;
-}
-
-.page-welcome div#main {
-    margin-top: 50px;
-}
-
-.page-welcome div#main div {
-    width: 45%;
-    height: 266px;
-}
-
-.tagesessen {
-    float: left;
-    margin-left: 45px;
-}
-
-.mittagsmenu {
-    float: right;
-    margin-right: 50px;
-}
-
-
-/*Page Pay*/
-
-div#main.page-pay {
-    background: #f1f4f2;
-    margin: 20px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    height: 84%;
-}
-
-.page-pay .singleOrder {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 25px;
-    background: white;
-    margin-bottom: 5px;
-    border-radius: 20px;
-    width: 40%;
-}
-
-p#costs {
-    border-top: 3px solid black;
-    width: 60px;
-    margin-left: 450px;
-    font-weight: bold;
-    padding-top: 5px;
-}
-
-
-/*Modal*/
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-
-/* Modal Content */
-
-.modal-content {
-    background-color: #cad7cc;
-    margin: auto;
-    padding: 20px;
-    width: 670px;
-    margin-top: 320px;
-    height: 200px;
-    border-radius: 20px;
-}
-
-.modal-content h2 {
-    text-align: center;
-}
-
-.nextToEachother {
-    float: left;
-    width: 47%;
-    text-align: center;
-    background: #007168;
-    margin: 10px;
-    color: white;
-    border-radius: 20px;
-    padding: 10px 0;
-}
-
-
-/* The Close Button */
-
-.close {
-    color: #000;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-button#jetztBezahlenButton,
-.page-pay button#CallServiceButtonMenu,
-button.closeWindow {
-    border: none !important;
-    font-size: 16px !important;
-    font-weight: bold !important;
-    padding: 10px 70px !important;
-    border-radius: 20px !important;
-    cursor: pointer !important;
-    height: 40px !important;
-    width: 300px;
-}
-
-button#jetztBezahlenButton,
-button.closeWindow {
-    background: #007168 !important;
-    color: #fff !important;
-}
-
-div#orders {
-    overflow: scroll;
-    height: 430px;
-}
-
-
-/*Page Startseite*/
-
-div#main.page-startseite {
-    background-image: url(Bildmaterial/Background/Startseite_Orderist.jpeg);
-    background-size: contain;
-    height: 100%;
-}
-
-.navbar.page-startseite {
-    width: 160px;
-    height: 200px;
-    position: absolute;
-    top: 340px;
-    left: 530px;
-}
+    
+    div#callServiceOverlay {
+        background: #cb0000;
+        text-align: center;
+        font-size: 45px;
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        border-radius: 20px;
+        padding: 14px 0;
+    }
+    
+    #callServiceOverlay button {
+        background: #fff;
+        color: #007168;
+        border: none !important;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 30px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    
+    div#callServiceOverlay h6 {
+        margin: 0;
+        color: #fff;
+        ;
+    }
+    
+    .welcome_content p {
+        font-size: 70px;
+        margin-top: 40px;
+        text-align: center;
+    }
+    
+    .welcome_buttons {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    .welcome_buttons div {
+        background: #007168;
+        color: white;
+        width: 200px;
+        height: 170px;
+        border-radius: 50px;
+        padding-top: 30px;
+        box-shadow: 0px 0px 10px #656565;
+    }
+    
+    .welcome_buttons div p {
+        font-size: 30px;
+        margin: 15px 0 0 0;
+    }
+    
+    .welcome_buttons img {
+        width: auto;
+        height: 95px;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .content_tablet.page-welcome #main .tagesessen {
+        background-image: url(Bildmaterial/Gerichte/tagesessen.png);
+        background-size: cover;
+    }
+    
+    .content_tablet.page-welcome #main .mittagsmenu {
+        background-image: url(Bildmaterial/Gerichte/mittagsmenu.png);
+        background-size: cover;
+    }
+    
+    .page-welcome div#main {
+        margin-top: 50px;
+    }
+    
+    .page-welcome div#main div {
+        width: 45%;
+        height: 266px;
+    }
+    
+    .tagesessen {
+        float: left;
+        margin-left: 45px;
+    }
+    
+    .mittagsmenu {
+        float: right;
+        margin-right: 50px;
+    }
+    /*Page Pay*/
+    
+    div#main.page-pay {
+        background: #f1f4f2;
+        margin: 20px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        height: 84%;
+    }
+    
+    .page-pay .singleOrder {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 25px;
+        background: white;
+        margin-bottom: 5px;
+        border-radius: 20px;
+        width: 40%;
+    }
+    
+    p#costs {
+        border-top: 3px solid black;
+        width: 60px;
+        margin-left: 450px;
+        font-weight: bold;
+        padding-top: 5px;
+    }
+    /*Modal*/
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    /* Modal Content */
+    
+    .modal-content {
+        background-color: #cad7cc;
+        margin: auto;
+        padding: 20px;
+        width: 670px;
+        margin-top: 320px;
+        height: 200px;
+        border-radius: 20px;
+        text-align: center;
+        ;
+    }
+    
+    .nextToEachother {
+        float: left;
+        width: 47%;
+        text-align: center;
+        background: #007168;
+        margin: 10px;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 0;
+    }
+    /* The Close Button */
+    
+    .close {
+        color: #000;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    button#jetztBezahlenButton,
+    .page-pay button#CallServiceButtonMenu,
+    button.closeWindow {
+        border: none !important;
+        font-size: 16px !important;
+        font-weight: bold !important;
+        padding: 10px 70px !important;
+        border-radius: 20px !important;
+        cursor: pointer !important;
+        height: 40px !important;
+        width: 300px;
+    }
+    
+    button#jetztBezahlenButton,
+    button.closeWindow {
+        background: #007168 !important;
+        color: #fff !important;
+    }
+    
+    div#orders {
+        overflow: scroll;
+        height: 430px;
+    }
+    /*Page Startseite*/
+    
+    div#main.page-startseite {
+        background-image: url(Bildmaterial/Background/Startseite_Orderist.jpeg);
+        background-size: contain;
+        height: 100%;
+    }
+    
+    .navbar.page-startseite {
+        width: 160px;
+        height: 200px;
+        position: absolute;
+        top: 340px;
+        left: 530px;
+    }
