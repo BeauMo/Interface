@@ -33,7 +33,7 @@
         overflow: scroll;
     }
     
-    ::-webkit-scrollbar {
+     ::-webkit-scrollbar {
         display: none;
     }
     /*Page MENU
@@ -248,6 +248,11 @@
     }
     /*Kategorie Buttons*/
     
+    button.filter-button.active {
+        background: #007168;
+        color: white;
+    }
+    
     .kategorie-buttons-div {
         position: absolute;
         left: 0;
@@ -255,7 +260,7 @@
     }
     
     div.kategorie-buttons-div img {
-        background: #017168;
+        background: #cad7cc;
         box-shadow: 0px 0px 10px #656565;
         border: none;
         border-top-right-radius: 20px;
@@ -265,6 +270,10 @@
         color: white;
         cursor: pointer;
         padding: 5px 30px;
+    }
+    
+    a.kategorie-button.active img {
+        background: #007168;
     }
     
     .kategorie-button img {

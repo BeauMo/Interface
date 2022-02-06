@@ -29,9 +29,9 @@
 
                     <div id="Getränke" class="tabcontent tabcontent-getränke">
                         <div class="kategorie-buttons-div">
-                            <a href="#Alkoholfrei" class="kategorie-button"><img src="Bildmaterial/Icons/softdrink.png" alt="Alkoholfrei Icon"></a><br>
-                            <a href="#Heißgetränke" class="kategorie-button"><img src="Bildmaterial/Icons/coffee.png" alt="Heißgetränke Icon"></a><br>
-                            <a href="#Alkoholisch" class="kategorie-button"><img src="Bildmaterial/Icons/alcoholic-drink.png" alt="Alkoholisch Icon"></a><br>
+                            <a href="#Alkoholfrei" class="kategorie-button active" onclick="selectedCat(event)"><img src="Bildmaterial/Icons/softdrink.png" alt="Alkoholfrei Icon"></a><br>
+                            <a href="#Heißgetränke" class="kategorie-button" onclick="selectedCat(event)"><img src="Bildmaterial/Icons/coffee.png" alt="Heißgetränke Icon"></a><br>
+                            <a href="#Alkoholisch" class="kategorie-button" onclick="selectedCat(event)"><img src="Bildmaterial/Icons/alcoholic-drink.png" alt="Alkoholisch Icon"></a><br>
                         </div>
                         <div id="drinks" class="accordion-div">
                             <!-- Div für Getränkeliste -->
@@ -40,20 +40,20 @@
 
                     <div id="Gerichte" class="tabcontent tabcontent-gerichte">
                         <div id="filter-buttons">
-                            <button onclick="filterDishes('')" class="filter-button">Alles</button>
-                            <button onclick="filterDishes('vegetarisch')" class="filter-button">Vegetarisch</button>
-                            <button onclick="filterDishes('vegan')" class="filter-button">Vegan</button>
-                            <button onclick="filterDishes('glutenfrei')" class="filter-button">Glutenfrei</button>
-                            <button onclick="filterDishes('fitness')" class="filter-button">Fitness</button>
-                            <button onclick="filterDishes('fisch')" class="filter-button">Fisch</button>
-                            <button onclick="filterDishes('fleisch')" class="filter-button">Fleisch</button>
+                            <button onclick="filterDishes(''); selectedFilter(event)" class="filter-button active">Alles</button>
+                            <button onclick="filterDishes('vegetarisch'); selectedFilter(event)" class="filter-button">Vegetarisch</button>
+                            <button onclick="filterDishes('vegan'); selectedFilter(event)" class="filter-button">Vegan</button>
+                            <button onclick="filterDishes('glutenfrei'); selectedFilter(event)" class="filter-button">Glutenfrei</button>
+                            <button onclick="filterDishes('fitness'); selectedFilter(event)" class="filter-button">Fitness</button>
+                            <button onclick="filterDishes('fisch'); selectedFilter(event)" class="filter-button">Fisch</button>
+                            <button onclick="filterDishes('fleisch'); selectedFilter(event)" class="filter-button">Fleisch</button>
 
                         </div>
                         <div class="kategorie-buttons-div">
-                            <a href="#Burger" class="kategorie-button"><img src="Bildmaterial/Icons/french-fries-3284396.png" alt="Alkoholfrei Icon"></a><br>
-                            <a href="#Pasta" class="kategorie-button"><img src="Bildmaterial/Icons/noodle-23892212.png" alt="Alkoholfrei Icon"></a><br>
-                            <a href="#Pizza" class="kategorie-button"><img src="Bildmaterial/Icons/Pizza.png" alt="Alkoholfrei Icon"></a><br>
-                            <a href="#Dessert" class="kategorie-button"><img src="Bildmaterial/Icons/ice-cream-icons-4819649.png" alt="Alkoholfrei Icon"></a>
+                            <a href="#Burger" class="kategorie-button active" onclick="selectedCat(event)"><img src="Bildmaterial/Icons/french-fries-3284396.png" alt="Alkoholfrei Icon"></a><br>
+                            <a href="#Pasta" class="kategorie-button" onclick="selectedCat(event)"><img src="Bildmaterial/Icons/noodle-23892212.png" alt="Alkoholfrei Icon"></a><br>
+                            <a href="#Pizza" class="kategorie-button" onclick="selectedCat(event)"><img src="Bildmaterial/Icons/Pizza.png" alt="Alkoholfrei Icon"></a><br>
+                            <a href="#Dessert" class="kategorie-button" onclick="selectedCat(event)"><img src="Bildmaterial/Icons/ice-cream-icons-4819649.png" alt="Alkoholfrei Icon"></a>
                         </div>
                         <div id="dishes" class="accordion-div">
                             <!-- Div für Essensliste -->
@@ -104,6 +104,26 @@
     /*Script*/
     /*==================================================================
     ====================================================================*/
+
+    function selectedCat(evt) {
+        tablinks = document.getElementsByClassName("kategorie-button");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        //document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+
+    }
+
+    function selectedFilter(evt) {
+        tablinks = document.getElementsByClassName("filter-button");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        //document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+
+    }
 
     function setup() {
 
@@ -264,7 +284,7 @@
         buildAccordion();
     }
 
-    function openAccordion(){
+    function openAccordion() {
         console.log("test")
     }
 
