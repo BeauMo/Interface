@@ -336,7 +336,11 @@ button.accordion p {
 
 p.accordion_headline {
     min-width: 240px;
-    margin-right: 270px;
+    margin-right: 230px;
+}
+p.price-menu {
+    text-align: right !important;
+    width: 80px;
 }
 
 button.order_button {
