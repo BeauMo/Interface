@@ -40,11 +40,14 @@
 
                     <div id="Gerichte" class="tabcontent tabcontent-gerichte">
                         <div id="filter-buttons">
-                            <button class="filter-button">Vegetarisch</button>
-                            <button class="filter-button">Vorspeisen</button>
-                            <button class="filter-button">Hauptgerichte</button>
-                            <button class="filter-button">Kindermenüs</button>
-                            <button class="filter-button">Desserts</button>
+                            <button onclick="filterDishes('')" class="filter-button">Alles</button>
+                            <button onclick="filterDishes('vegetarisch')" class="filter-button">Vegetarisch</button>
+                            <button onclick="filterDishes('vegan')" class="filter-button">Vegan</button>
+                            <button onclick="filterDishes('glutenfrei')" class="filter-button">Glutenfrei</button>
+                            <button onclick="filterDishes('fitness')" class="filter-button">Fitness</button>
+                            <button onclick="filterDishes('fisch')" class="filter-button">Fisch</button>
+                            <button onclick="filterDishes('fleisch')" class="filter-button">Fleisch</button>
+                            
                         </div>
                         <div class="kategorie-buttons-div">
                             <a href="#Burger" class="kategorie-button">Burger</a><br>
@@ -104,14 +107,12 @@
         if (sessionStorage.getItem("callService") == "true")
             callService();
 
-        console.log(sessionStorage.getItem("callService"))
-
-        Array.prototype.forEach.call(persistentOrders, function(element) {
+        Array.prototype.forEach.call(persistentOrders, function (element) {
             element.addEventListener("click", removeFromPrepareOrder);
         });
 
         drinks.forEach(element => {
-            if(element.type == "header"){
+            if (element.type == "header") {
                 let categorie = document.createElement('p');
                 categorie.innerHTML = element.categorie;
                 categorie.className = "categorie";
@@ -119,7 +120,9 @@
                 document.getElementById("drinks").appendChild(categorie);
                 return;
             }
-            console.log(element.categorie)
+            let dishContainer = document.createElement("div");
+            dishContainer.className = "drink_Container";
+
             var accordion = document.createElement("button");
             accordion.className = "accordion";
 
@@ -129,12 +132,9 @@
             accordion.appendChild(accordion_headline);
 
             var price = document.createElement('p');
-            price.innerHTML = element.price + " €";
+            price.innerHTML = element.price.toFixed(2) + " €";
             accordion.appendChild(price);
-            // orderButton.addEventListener("click", addToOrder);
-
-
-
+            
             var orderButton_div = document.createElement("div");
             orderButton_div.className = "orderbutton_left";
 
@@ -144,9 +144,9 @@
             orderButton.className = "order_button"
             orderButton_div.appendChild(orderButton);
 
-            var div = document.createElement('div');
-            div.className = "panel";
-            div.id = element.dish;
+            var panel = document.createElement('div');
+            panel.className = "panel";
+            panel.id = element.dish;
 
             var dish = "<p class= 'meal_name'>" + element.dish + "</p>";
             var description = "<p class= 'ingredients'>" + element.description + "</p>";
@@ -155,7 +155,6 @@
 
             var p_description_left = document.createElement('div');
             p_description_left.className = "panel_content_left";
-            //p_description_left.innerHTML = description;
 
             var p_description_right = document.createElement('div');
             p_description_right.className = "panel_content_right";
@@ -166,22 +165,21 @@
             img.className = "panel_content_img";
             img.src = element.picture;
 
-
-            //div.appendChild(p_dish);
-            div.appendChild(p_description_right);
-            div.appendChild(p_description_left);
+            panel.appendChild(p_description_right);
+            panel.appendChild(p_description_left);
             p_description_left.appendChild(img);
-            // accordion.appendChild(orderButton);
 
             $(orderButton).data("entry", element);
 
-            document.getElementById("drinks").appendChild(orderButton_div);
-            document.getElementById("drinks").appendChild(accordion);
-            document.getElementById("drinks").appendChild(div);
+            dishContainer.appendChild(orderButton_div);
+            dishContainer.appendChild(accordion);
+            dishContainer.appendChild(panel);
+            
+            document.getElementById("drinks").appendChild(dishContainer);
         });
 
         dishes.forEach(element => {
-            if(element.type == "header"){
+            if (element.type == "header") {
                 let categorie = document.createElement('p');
                 categorie.innerHTML = element.categorie;
                 categorie.className = "categorie";
@@ -190,8 +188,12 @@
                 return;
             }
 
+            let dishContainer = document.createElement("div");
+            dishContainer.className = "dish_Container";
+            dishContainer.setAttribute("filter", element.filter);
+
             var accordion = document.createElement("button");
-            accordion.className = "accordion";
+            accordion.classList.add("accordion", "accordion-dishes");
 
             var accordion_headline = document.createElement('p');
             accordion_headline.innerHTML = element.dish;
@@ -199,7 +201,7 @@
             accordion.appendChild(accordion_headline);
 
             var price = document.createElement('p');
-            price.innerHTML = element.price + " €";
+            price.innerHTML = element.price.toFixed(2) + " €";
             accordion.appendChild(price);
             // orderButton.addEventListener("click", addToOrder);
 
@@ -212,8 +214,9 @@
             orderButton.className = "order_button"
             orderButton_div.appendChild(orderButton);
 
-            var div = document.createElement('div');
-            div.className = "panel";
+            var panel = document.createElement('div');
+            panel.classList.add("panel", "panel-dishes");
+            panel.id = element.dish;
 
             var dish = "<p class= 'meal_name'>" + element.dish + "</p>";
             var description = "<p class= 'ingredients'>" + element.description + "</p>";
@@ -235,15 +238,16 @@
 
 
             //div.appendChild(p_dish);
-            div.appendChild(p_description_right);
-            div.appendChild(p_description_left);
+            panel.appendChild(p_description_right);
+            panel.appendChild(p_description_left);
             p_description_left.appendChild(img);
 
             $(orderButton).data("entry", element);
 
-            document.getElementById("dishes").appendChild(orderButton_div);
-            document.getElementById("dishes").appendChild(accordion);
-            document.getElementById("dishes").appendChild(div);
+            dishContainer.appendChild(orderButton_div);
+            dishContainer.appendChild(accordion);
+            dishContainer.appendChild(panel);
+            document.getElementById("dishes").appendChild(dishContainer);
         });
 
         buildAccordion();
@@ -274,7 +278,7 @@
         var div = document.createElement("div");
         div.className = "singleOrder";
         div.textContent = addedOrder.dish;
-        div.setAttribute("price", addedOrder.price);
+        div.setAttribute("price", addedOrder.price.toFixed(2));
 
         var deleteButton = document.createElement("button");
         deleteButton.className = "removeOrder";
@@ -289,7 +293,6 @@
         $(this).parent().remove();
     }
 
-
     /*Accordion*/
 
     function buildAccordion() {
@@ -297,16 +300,36 @@
         var i;
 
         for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
+            acc[i].addEventListener("click", toggleAccordion );
         }
+    }
+
+    function toggleAccordion () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+    }
+
+    function filterDishes(filter) {
+        let dishes_dom = document.getElementsByClassName("dish_Container");
+        // console.log(dishes_dom);
+        
+        Array.prototype.forEach.call(dishes_dom, function (element) {
+            let filters = element.getAttribute("filter");
+            if(!filters.includes(filter)){
+                element.hidden = true;
+            }
+            // else if(filter == "all"){
+            //     element.hidden = false
+            // }
+            else{
+                element.hidden = false;
+            }
+        });
     }
 
     function confirmOrder() {
@@ -350,42 +373,42 @@
         dish: "Cola groß",
         description: "Kohlensäurehaltiges Erfrischungsgetränk",
         ingredients: "Wasser, Zucker oder kalorienfreie Süßstoffe, Koffein, Aromen, Mineralstoffe und Zusatzstoffe",
-        price: 4.3,
+        price: 4.30,
         picture: "Bildmaterial/Getraenke/Cola.png",
         categorie: "Alkoholfrei"
     }, {
         dish: "Cola klein",
         description: "Kohlensäurehaltiges Erfrischungsgetränk",
         ingredients: "Wasser, Zucker oder kalorienfreie Süßstoffe, Koffein, Aromen, Mineralstoffe und Zusatzstoffe",
-        price: 3.3,
+        price: 3.30,
         picture: "Bildmaterial/Getraenke/Cola.png",
         categorie: "Alkoholfrei"
     }, {
         dish: "Eistee groß",
         description: "Hausgemacht - Erfrischend, kühl und lecker",
         ingredients: "Tee aus Schwarztee, Zitronensaft, Zucker",
-        price: 4.3,
+        price: 4.30,
         picture: "Bildmaterial/Getraenke/Eistee.png",
         categorie: "Alkoholfrei"
     }, {
         dish: "Eistee klein",
         description: "Hausgemacht - Erfrischend, kühl und lecker",
         ingredients: "Tee aus Schwarztee, Zitronensaft, Zucker",
-        price: 3.3,
+        price: 3.30,
         picture: "Bildmaterial/Getraenke/Eistee.png",
         categorie: "Alkoholfrei"
     }, {
         dish: "Hausgemachte Limonade groß",
         description: "Alkoholfrei, süß und lecker",
         ingredients: "Wasser, Zitrone, Limette, Rohrzucker",
-        price: 4.3,
+        price: 4.30,
         picture: "Bildmaterial/Getraenke/limo.png",
         categorie: "Alkoholfrei"
     }, {
         dish: "Hausgemachte Limonade klein",
         description: "Alkoholfrei, süß und lecker",
         ingredients: "Wasser, Zitrone, Limette, Rohrzucker",
-        price: 3.3,
+        price: 3.30,
         picture: "Bildmaterial/Getraenke/limo.png",
         categorie: "Alkoholfrei"
     }, {
@@ -395,14 +418,14 @@
         dish: "Café groß",
         description: "Koffeinhaltiges Heißgetränk",
         ingredients: "Wasser, Kafeebohnen",
-        price: 2.7,
+        price: 2.70,
         picture: "Bildmaterial/Getraenke/coffee.png",
         categorie: "Heißgetränk"
     }, {
         dish: "Café klein",
         description: "Koffeinhaltiges Heißgetränk",
         ingredients: "Wasser, Kafeebohnen",
-        price: 2.2,
+        price: 2.20,
         picture: "Bildmaterial/Getraenke/coffee.png",
         categorie: "Heißgetränk"
     }, {
@@ -412,14 +435,14 @@
         dish: "Rotwein 1/4",
         description: "Purpurroter Wein zwölf Monate in gebrauchten Barriques gereift",
         ingredients: "Wasser, Alkohol, Aromastoffe, Tanine",
-        price: 5.5,
+        price: 5.50,
         picture: "Bildmaterial/Getraenke/wine.png",
         categorie: "Alkoholisch"
     }, {
         dish: "Rotwein 1/8",
         description: "Purpurroter Wein zwölf Monate in gebrauchten Barriques gereift",
         ingredients: "Wasser, Alkohol, Aromastoffe, Tanine",
-        price: 2.8,
+        price: 2.80,
         picture: "Bildmaterial/Getraenke/wine.png",
         categorie: "Alkoholisch"
     }];
@@ -434,16 +457,18 @@
         dish: "Chicken-Burger",
         description: "Der Klassiker für alle Chicken-Freunde!",
         ingredients: "100% Hähnchenfleisch, WEIZENMEHL, Wasser, pflanzliche Öle (Sonnenblume, Raps)",
-        price: 15.8,
+        price: 15.80,
         picture: "Bildmaterial/Gerichte/burger.png",
-        categorie: "Burger"
+        categorie: "Burger",
+        filter: ["fitness","fleisch"]
     }, {
         dish: "Double-Beef-Burger",
         description: "Das Original für jede Gelegenheit. Rindfleisch in seiner leckersten Form",
         ingredients: "100% Rindfleisch, Weizenmehl, Wasser, Zucker, Hefe, Rapsöl, Salz, Weizeneiweiss",
-        price: 15.8,
+        price: 15.80,
         picture: "Bildmaterial/Gerichte/burger02.png",
-        categorie: "Burger"
+        categorie: "Burger",
+        filter: ["fleisch"]
     }, {
         type: "header",
         categorie: "Pasta"
@@ -451,23 +476,26 @@
         dish: "Spaghetti Carbonara",
         description: "Der italienische Nudelklassiker",
         ingredients: "Guanciale, Ei, Pfeffer, Käse",
-        price: 12.6,
+        price: 12.60,
         picture: "Bildmaterial/Gerichte/Pasta01.png",
-        categorie: "Pasta"
+        categorie: "Pasta",
+        filter: ["fleisch"]
     }, {
         dish: "Pasta al forno",
         description: "Typisches Gericht der italienischen Küche",
         ingredients: "Käse, Soße, Ei, Pfeffer",
-        price: 12.8,
+        price: 12.80,
         picture: "Bildmaterial/Gerichte/pasta03.png",
-        categorie: "Pasta"
+        categorie: "Pasta",
+        filter: ["vegetarisch"]
     }, {
         dish: "Ravioli Napoli",
         description: "Original hausgemachte italienische Ravioli",
         ingredients: "Gemüse, Strauchtomaten, Lauchzwiebeln, Chilschoten, Krätuter",
-        price: 7.8,
+        price: 7.80,
         picture: "Bildmaterial/Gerichte/suppe01.png",
-        categorie: "Pasta"
+        categorie: "Pasta",
+        filter: ["vegetarisch","vegan", "glutenfrei"]
     }, {
         type: "header",
         categorie: "Pizza"
@@ -475,30 +503,34 @@
         dish: "Pizza Olivia",
         description: "Original italienische Pizza mit Oliven",
         ingredients: "Lauchzwiebel, Oliven, Schinken, Gorgonzola",
-        price: 9.9,
+        price: 9.90,
         picture: "Bildmaterial/Gerichte/pizza01.png",
-        categorie: "Pizza"
+        categorie: "Pizza",
+        filter: ["fleisch"]
     }, {
         dish: "Pizza Spinaci",
         description: "Original italienische Pizza mit Spinat",
         ingredients: "Olivenöl, Tomaten, Spinat, Knoblauch, Zwiebel, Schafkäse",
-        price: 9.9,
+        price: 9.90,
         picture: "Bildmaterial/Gerichte/pizza02.png",
-        categorie: "Pizza"
+        categorie: "Pizza",
+        filter: ["vegetarisch"]
     }, {
         dish: "Pizza Quattro Stagioni ",
         description: "Original italienische Pizza - 4 Jahreszeiten",
         ingredients: "Mozzarella, Kräuter, Tomaten, Steinpilze, Artischocken, Oliven, Sardellen",
-        price: 11.8,
+        price: 11.80,
         picture: "Bildmaterial/Gerichte/pizza03.png",
-        categorie: "Pizza"
+        categorie: "Pizza",
+        filter: ["vegetarisch"]
     }, {
         dish: "Pizza Salami",
         description: "Original italienische Pizza mit Salami",
         ingredients: "Olivenöl, Tomaten, Salami, Knoblauch, Zwiebel",
-        price: 9.8,
+        price: 9.80,
         picture: "Bildmaterial/Gerichte/pizza04.png",
-        categorie: "Pizza"
+        categorie: "Pizza",
+        filter: ["fleisch"]
     }, {
         type: "header",
         categorie: "Dessert"
@@ -506,17 +538,19 @@
         dish: "Fitness-Salat mit Lachsfilet",
         description: "Fitness-Salat mit gebratenem Lachsfilet - genau das richtige für einen heißen Sommertag",
         ingredients: "Gemischter Salat, Cocktailtomaten, Öl, Norwegischer Wildlachs",
-        price: 16.8,
+        price: 16.80,
         picture: "Bildmaterial/Gerichte/fisch.png",
-        categorie: "Dessert"
+        categorie: "Dessert",
+        filter: ["fisch", "fitness", "glutenfrei"]
     }, {
         dish: "Schokoladen Cupcake",
         description: "Saftiger Schoko-Cupcake mit einem cremigen, schokoladigen Frosting mit Mascarpone und Espresso",
         ingredients: "Zucker, Eier, Mehl, Kakaopulver, Sahne, Espresso",
-        price: 4.9,
+        price: 4.90,
         picture: "Bildmaterial/Gerichte/dessert01.png",
-        categorie: "Dessert"
-    }, ];
+        categorie: "Dessert",
+        filter: ["vegetarisch"]
+    },];
 
     window.addEventListener("load", setup);
     window.addEventListener("beforeunload", saveOrder)
