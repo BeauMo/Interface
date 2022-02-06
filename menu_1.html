@@ -30,8 +30,8 @@
                     <div id="Getränke" class="tabcontent tabcontent-getränke">
                         <div class="kategorie-buttons-div">
                             <a href="#Alkoholfrei" class="kategorie-button"><img src="Bildmaterial/Icons/softdrink.png" alt="Alkoholfrei Icon"></a><br>
-                            <a href="#Heißgetränke" class="kategorie-button"><img src="Bildmaterial/Icons/Gruppe 70.png" alt="Heißgetränke Icon"></a><br>
-                            <a href="#Alkoholisch" class="kategorie-button"><img src="Bildmaterial/Icons/Gruppe 70.png" alt="Alkoholisch Icon"></a><br>
+                            <a href="#Heißgetränke" class="kategorie-button"><img src="Bildmaterial/Icons/coffee.png" alt="Heißgetränke Icon"></a><br>
+                            <a href="#Alkoholisch" class="kategorie-button"><img src="Bildmaterial/Icons/alcoholic-drink.png" alt="Alkoholisch Icon"></a><br>
                         </div>
                         <div id="drinks" class="accordion-div">
                             <!-- Div für Getränkeliste -->
@@ -47,7 +47,7 @@
                             <button onclick="filterDishes('fitness')" class="filter-button">Fitness</button>
                             <button onclick="filterDishes('fisch')" class="filter-button">Fisch</button>
                             <button onclick="filterDishes('fleisch')" class="filter-button">Fleisch</button>
-                            
+
                         </div>
                         <div class="kategorie-buttons-div">
                             <a href="#Burger" class="kategorie-button"><img src="Bildmaterial/Icons/french-fries-3284396.png" alt="Alkoholfrei Icon"></a><br>
@@ -107,7 +107,7 @@
         if (sessionStorage.getItem("callService") == "true")
             callService();
 
-        Array.prototype.forEach.call(persistentOrders, function (element) {
+        Array.prototype.forEach.call(persistentOrders, function(element) {
             element.addEventListener("click", removeFromPrepareOrder);
         });
 
@@ -135,7 +135,7 @@
             price.innerHTML = element.price.toFixed(2) + " €";
             price.className = "price-menu"
             accordion.appendChild(price);
-            
+
             var orderButton_div = document.createElement("div");
             orderButton_div.className = "orderbutton_left";
 
@@ -175,7 +175,7 @@
             dishContainer.appendChild(orderButton_div);
             dishContainer.appendChild(accordion);
             dishContainer.appendChild(panel);
-            
+
             document.getElementById("drinks").appendChild(dishContainer);
         });
 
@@ -302,11 +302,11 @@
         var i;
 
         for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", toggleAccordion );
+            acc[i].addEventListener("click", toggleAccordion);
         }
     }
 
-    function toggleAccordion () {
+    function toggleAccordion() {
         this.classList.toggle("active");
         var panel = this.nextElementSibling;
         if (panel.style.maxHeight) {
@@ -319,16 +319,16 @@
     function filterDishes(filter) {
         let dishes_dom = document.getElementsByClassName("dish_Container");
         // console.log(dishes_dom);
-        
-        Array.prototype.forEach.call(dishes_dom, function (element) {
+
+        Array.prototype.forEach.call(dishes_dom, function(element) {
             let filters = element.getAttribute("filter");
-            if(!filters.includes(filter)){
+            if (!filters.includes(filter)) {
                 element.hidden = true;
             }
             // else if(filter == "all"){
             //     element.hidden = false
             // }
-            else{
+            else {
                 element.hidden = false;
             }
         });
@@ -462,7 +462,7 @@
         price: 15.80,
         picture: "Bildmaterial/Gerichte/burger.png",
         categorie: "Burger",
-        filter: ["fitness","fleisch"]
+        filter: ["fitness", "fleisch"]
     }, {
         dish: "Double-Beef-Burger",
         description: "Das Original für jede Gelegenheit. Rindfleisch in seiner leckersten Form",
@@ -497,7 +497,7 @@
         price: 7.80,
         picture: "Bildmaterial/Gerichte/suppe01.png",
         categorie: "Pasta",
-        filter: ["vegetarisch","vegan", "glutenfrei"]
+        filter: ["vegetarisch", "vegan", "glutenfrei"]
     }, {
         type: "header",
         categorie: "Pizza"
@@ -552,7 +552,7 @@
         picture: "Bildmaterial/Gerichte/dessert01.png",
         categorie: "Dessert",
         filter: ["vegetarisch"]
-    },];
+    }, ];
 
     window.addEventListener("load", setup);
     window.addEventListener("beforeunload", saveOrder)
