@@ -73,6 +73,9 @@
         let costs = 0;
         document.getElementById("orders").innerHTML = sessionStorage.getItem("ordered");
 
+        if (sessionStorage.getItem("callService") == "true")
+            callService();
+            
         let persistentOrders = document.getElementsByClassName("singleOrder");
 
         // $(".removeOrder").remove();
