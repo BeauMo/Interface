@@ -262,18 +262,19 @@ button.filter-button {
     left: 0;
     margin-top: 30px;
 }
-.kategorie-buttons-div button {
+div.kategorie-buttons-div img {
     background: #017168;
     box-shadow: 0px 0px 10px #656565;
     border: none;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    min-width: 95px;
+    min-width: 40px;
     margin-bottom: 15px;
     color: white;
     cursor: pointer;
+    padding: 5px 30px;
 }
-button.kategorie-button img {
+.kategorie-button img {
     width: 45px;
     height: 45px;
 }

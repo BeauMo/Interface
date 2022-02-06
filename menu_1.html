@@ -29,9 +29,9 @@
 
                     <div id="Getränke" class="tabcontent tabcontent-getränke">
                         <div class="kategorie-buttons-div">
-                            <a href="#Alkoholfrei" class="kategorie-button">Alkoholfrei</a><br>
-                            <a href="#Heißgetränke" class="kategorie-button">Heißgetränke</a><br>
-                            <a href="#Alkoholisch" class="kategorie-button">Alkoholisch</a><br>
+                            <a href="#Alkoholfrei" class="kategorie-button"><img src="Bildmaterial/Icons/Gruppe 70.png" alt="Alkoholfrei Icon"></a><br>
+                            <a href="#Heißgetränke" class="kategorie-button"><img src="Bildmaterial/Icons/Gruppe 70.png" alt="Heißgetränke Icon"></a><br>
+                            <a href="#Alkoholisch" class="kategorie-button"><img src="Bildmaterial/Icons/Gruppe 70.png" alt="Alkoholisch Icon"></a><br>
                         </div>
                         <div id="drinks" class="accordion-div">
                             <!-- Div für Getränkeliste -->
@@ -50,10 +50,10 @@
                             
                         </div>
                         <div class="kategorie-buttons-div">
-                            <a href="#Burger" class="kategorie-button">Burger</a><br>
-                            <a href="#Pasta" class="kategorie-button">Pasta</a><br>
-                            <a href="#Pizza" class="kategorie-button">Pizza</a><br>
-                            <a href="#Dessert" class="kategorie-button">Dessert</a>
+                            <a href="#Burger" class="kategorie-button"><img src="Bildmaterial/Icons/french-fries-3284396.png" alt="Alkoholfrei Icon"></a><br>
+                            <a href="#Pasta" class="kategorie-button"><img src="Bildmaterial/Icons/noodle-23892212.png" alt="Alkoholfrei Icon"></a><br>
+                            <a href="#Pizza" class="kategorie-button"><img src="Bildmaterial/Icons/Gruppe 70.png" alt="Alkoholfrei Icon"></a><br>
+                            <a href="#Dessert" class="kategorie-button"><img src="Bildmaterial/Icons/ice-cream-icons-4819649.png" alt="Alkoholfrei Icon"></a>
                         </div>
                         <div id="dishes" class="accordion-div">
                             <!-- Div für Essensliste -->
@@ -113,7 +113,7 @@
 
         drinks.forEach(element => {
             if (element.type == "header") {
-                let categorie = document.createElement('p');
+                let categorie = document.createElement('h2');
                 categorie.innerHTML = element.categorie;
                 categorie.className = "categorie";
                 categorie.id = element.categorie;
@@ -180,7 +180,7 @@
 
         dishes.forEach(element => {
             if (element.type == "header") {
-                let categorie = document.createElement('p');
+                let categorie = document.createElement('h2');
                 categorie.innerHTML = element.categorie;
                 categorie.className = "categorie";
                 categorie.id = element.categorie;
